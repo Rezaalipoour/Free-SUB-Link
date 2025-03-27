@@ -18,8 +18,6 @@
       --accent1: #f00596;
       --accent2: #8e2de2;
       --accent3: #5B0EBD;
-
-      /* همان گرادیان هدر */
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
     }
 
@@ -31,13 +29,12 @@
     }
 
     body {
-      /* رنگ پس‌زمینهٔ پایه */
       background-color: #0a0a0a;
       color: var(--text-color);
       overflow-x: hidden;
     }
 
-    /* ====== هدر (Hero) با گرادیان ====== */
+    /* ====== HERO (هدر با گرادیان) ====== */
     .hero {
       background: var(--gradient-hero);
       min-height: 80vh;
@@ -77,16 +74,18 @@
       box-shadow: 0 8px 20px rgba(240,5,150,0.4);
     }
 
-    /* ====== FEATURE SECTION کاملاً مشکی ====== */
+    /* ====== FEATURE SECTION ====== */
     .feature-section {
-      background: #000;
+      background: #000;  /* پس‌زمینهٔ سکشن */
       display: flex;
       justify-content: center;
       padding: 3rem 1rem;
     }
+    /* مستطیل متمایز با رنگ تیره‌تر، بوردر و سایه */
     .feature-container {
-      background: #000;
-      border-radius: 24px;
+      background: #111;         /* کمی روشن‌تر از #000 تا مشخص باشد */
+      border: 2px solid #333;  /* حاشیهٔ خاکستری تیره */
+      border-radius: 16px;     /* گوشه‌های مستطیل */
       width: 90%;
       max-width: 1100px;
       min-height: 300px;
@@ -95,16 +94,19 @@
       align-items: center;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      /* سایه برای جدا شدن از پس‌زمینه */
+      box-shadow: 0 4px 30px rgba(0,0,0,0.7);
+      margin: 2rem auto; /* فاصله عمودی و مرکزچین */
     }
+    /* بزرگ‌تر کردن آبجکت سه‌بعدی */
     .feature-img-wrapper {
       flex: 1;
-      max-width: 40%;
+      max-width: 60%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #000;
-      border-radius: 20px;
+      background-color: #111;
+      border-radius: 16px;
       margin: 1rem;
     }
     .feature-img-wrapper img {
@@ -113,6 +115,7 @@
       object-fit: contain;
       border-radius: 16px;
     }
+
     .feature-content {
       flex: 1;
       padding: 2rem;
@@ -188,7 +191,6 @@
     }
 
     /* ====== LINKS SECTION ====== */
-    /* پس‌زمینهٔ سکشن لینک‌ها را هم مشکی می‌کنیم */
     .links-section {
       background: #000;
       width: 100%;
@@ -207,69 +209,44 @@
       color: #aaa;
       margin-bottom: 2rem;
     }
-
-    /* باکس‌های لینک‌ها با گرادیان هدر */
     .subscription-container {
-      display: block;
-      white-space: nowrap;
-      overflow-x: auto;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      background: #111;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 2rem;
       margin: 0 auto;
-      padding: 0;
-      text-align: center;
     }
     .subscription-box {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      vertical-align: middle;
       width: 120px;
       height: 120px;
-      margin: 0 8px;
       cursor: pointer;
-      border-radius: 14px;
-      overflow: hidden;
+      border-radius: 6px;
       color: #fff;
-      /* استفاده از همان گرادیان هدر (var(--gradient-hero)) */
-      background:
-        linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        var(--gradient-hero) border-box;
-      border: 2px solid transparent;
+      background: linear-gradient(135deg, #5B0EBD, #f00596);
+      border: 1px solid #222;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      backdrop-filter: blur(6px);
       transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
       text-align: center;
-    }
-    .subscription-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, #111, #330a4e);
-      background-size: 200% 200%;
-      opacity: 0.2;
-      z-index: -1;
-      animation: subtleMove 8s ease-in-out infinite;
-    }
-    @keyframes subtleMove {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
     .subscription-box:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
     .subscription-box span {
-      font-weight: 400;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-weight: 600;
+      font-size: 0.95rem;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      z-index: 1;
       max-width: 100%;
       text-align: center;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 1rem;
@@ -280,7 +257,7 @@
 </head>
 <body>
 
-  <!-- HERO (هدر با گرادیان قبلی) -->
+  <!-- هدر (Hero) -->
   <section class="hero">
     <h1>ProCreative VPN</h1>
     <p>Secure, Modern, and Free</p>
@@ -289,7 +266,7 @@
     </button>
   </section>
 
-  <!-- FEATURE SECTION (پس‌زمینه کاملاً مشکی) -->
+  <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
       <div class="feature-img-wrapper">
@@ -298,14 +275,11 @@
           alt="Security Icon"
         />
       </div>
-
       <div class="feature-content">
         <div class="pink-card">
           <div class="arrow">⤴</div>
           <h3>High-Level Security</h3>
-          <p>
-            Protect your data and privacy with next-gen encryption and ultra-fast servers.
-          </p>
+          <p>Protect your data and privacy with next-gen encryption and ultra-fast servers.</p>
         </div>
         <div class="feature-stats">
           <div class="stat-item">
@@ -321,13 +295,12 @@
     </div>
   </section>
 
-  <!-- LINKS SECTION (پس‌زمینه مشکی + باکس‌های لینک با گرادیان هدر) -->
+  <!-- LINKS SECTION -->
   <section class="links-section" id="links-section">
     <h2 class="section-title">Modern VPN Links</h2>
     <p class="section-subtitle">Click on any box to copy your link</p>
-
     <div class="subscription-container" id="links">
-      <!-- باکس‌ها توسط جاوااسکریپت اضافه می‌شوند -->
+      <!-- باکس‌های لینک با JS اضافه می‌شوند -->
     </div>
   </section>
 
@@ -336,7 +309,6 @@
   </footer>
 
   <script>
-    // نمونه‌ی گرفتن لیست لینک‌ها از sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
