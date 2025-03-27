@@ -209,6 +209,7 @@
       padding: 2rem;
       margin: 0 auto;
     }
+
     .subscription-box {
       display: flex;
       align-items: center;
@@ -227,6 +228,12 @@
     .subscription-box:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+    .subscription-box:active {
+      /* حالت کلیک: پس‌زمینه مشکی، بوردر نازک، متن سفید */
+      background: #000;
+      border: 1px solid #5B0EBD;
+      color: #fff;
     }
     .subscription-box span {
       font-weight: 600;
@@ -402,7 +409,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
+    // فقط عملیات کپی به کلیپ‌بورد انجام می‌شود؛ تغییری در ظاهر باکس نمی‌دهیم.
     fetch("sub.txt")
       .then((response) => response.text())
       .then((data) => {
@@ -418,15 +425,10 @@
           textSpan.textContent = `Server ${index + 1}`;
           box.appendChild(textSpan);
 
+          // کپی به کلیپ‌بورد بدون نمایش پیام
           box.addEventListener("click", () => {
             navigator.clipboard
               .writeText(line)
-              .then(() => {
-                // تغییر ظاهر باکس پس از کلیک:
-                box.innerHTML = "";
-                box.style.background = "#000";
-                box.style.border = "1px solid #5B0EBD";
-              })
               .catch((err) => console.error("Failed to copy link:", err));
           });
 
