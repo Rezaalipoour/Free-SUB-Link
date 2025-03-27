@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Modern VPN Subscription - Inline-Flex Centered</title>
+  <title>Modern VPN Subscription</title>
 
   <!-- گوگل فونت -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -14,7 +14,6 @@
 
   <style>
     :root {
-      --bg-color: #0a0a0a;
       --text-color: #fff;
       --accent1: #f00596;
       --accent2: #8e2de2;
@@ -31,13 +30,14 @@
       font-family: 'Inter', sans-serif;
     }
 
+    /* بدنهٔ کلی سایت با رنگ تیره */
     body {
-      background-color: var(--bg-color);
+      background-color: #0a0a0a; /* یا هر رنگ تیره‌ای که مایل هستید */
       color: var(--text-color);
       overflow-x: hidden;
     }
 
-    /* ====== HERO SECTION ====== */
+    /* ====== HERO (هدر) ====== */
     .hero {
       background: var(--gradient-hero);
       min-height: 80vh;
@@ -46,7 +46,6 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
       padding: 0 1rem;
     }
     .hero h1 {
@@ -79,13 +78,15 @@
     }
 
     /* ====== FEATURE SECTION ====== */
+    /* سکشن فیچر کاملاً مشکی */
     .feature-section {
+      background: #000;
       display: flex;
       justify-content: center;
       padding: 3rem 1rem;
     }
     .feature-container {
-      background: #0a0a0a;
+      background: #000;
       border-radius: 24px;
       width: 90%;
       max-width: 1100px;
@@ -98,22 +99,16 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
-    /* تغییر اصلی همین‌جاست: رنگ پس‌زمینه را به #000 تغییر دادیم */
     .feature-img-wrapper {
       flex: 1;
       max-width: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #000; /* به‌جای #1a1a1a */
+      background-color: #000; /* اینجا هم مشکی */
       border-radius: 20px;
       margin: 1rem;
-      box-shadow:
-        0 0 20px rgba(240, 5, 150, 0.1),
-        inset 0 0 20px rgba(240, 5, 150, 0.05);
-      position: relative;
     }
-
     .feature-img-wrapper img {
       width: 100%;
       height: auto;
@@ -284,7 +279,7 @@
 </head>
 <body>
 
-  <!-- HERO -->
+  <!-- HERO (هدر با گرادیان) -->
   <section class="hero">
     <h1>ProCreative VPN</h1>
     <p>Secure, Modern, and Free</p>
@@ -293,10 +288,9 @@
     </button>
   </section>
 
-  <!-- FEATURE SECTION -->
+  <!-- FEATURE SECTION کاملاً مشکی -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
-      <!-- تصویر سه‌بعدی -->
       <div class="feature-img-wrapper">
         <img
           src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg"
@@ -341,7 +335,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از فایل sub.txt یا هر سورس دیگری
+    // نمونه‌ی گرفتن لیست لینک‌ها از sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
