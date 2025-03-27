@@ -5,12 +5,21 @@
   <!-- تگ viewport برای موبایل -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modern VPN Subscription</title>
-  <!-- اضافه‌کردن لوگوی فاوآیکن در تب مرورگر -->
-  <link rel="icon" href="https://picodl.com/download/simple-elegant-abstract-letter-shield-logo_327835-8839.jpg" type="image/png">
+
+  <!-- فاوآیکن (در صورت نیاز) -->
+  <link
+    rel="icon"
+    href="https://picodl.com/download/simple-elegant-abstract-letter-shield-logo_327835-8839.jpg"
+    type="image/png"
+  />
+
   <!-- گوگل فونت -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
@@ -20,17 +29,20 @@
       --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
     }
+
     * {
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
+
     body {
       background-color: #0a0a0a;
       color: var(--text-color);
       overflow-x: hidden;
     }
+
     /* ====== هدر (Hero) ====== */
     .hero {
       background: var(--gradient-hero);
@@ -42,19 +54,22 @@
       text-align: center;
       padding: 0 1rem;
     }
+
     .hero h1 {
       font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
-      text-shadow: 0 4px 20px rgba(91,14,189,0.6);
+      text-shadow: 0 4px 20px rgba(91, 14, 189, 0.6);
     }
+
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
       opacity: 0.9;
       color: #ccc;
     }
+
     .cta-btn {
       padding: 1rem 2rem;
       background: linear-gradient(135deg, var(--accent1), var(--accent2));
@@ -64,12 +79,14 @@
       color: #fff;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 15px rgba(240,5,150,0.3);
+      box-shadow: 0 4px 15px rgba(240, 5, 150, 0.3);
     }
+
     .cta-btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(240,5,150,0.4);
+      box-shadow: 0 8px 20px rgba(240, 5, 150, 0.4);
     }
+
     /* ====== FEATURE SECTION ====== */
     .feature-section {
       background: #0a0a0a;
@@ -77,6 +94,7 @@
       justify-content: center;
       padding: 3rem 1rem;
     }
+
     .feature-container {
       background: #000;
       border: 2px solid #333;
@@ -89,9 +107,10 @@
       align-items: center;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.7);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
       margin: 2rem auto;
     }
+
     .feature-img-wrapper {
       flex: 1;
       max-width: 60%;
@@ -102,12 +121,14 @@
       border-radius: 16px;
       margin: 1rem;
     }
+
     .feature-img-wrapper img {
       width: 100%;
       height: auto;
       object-fit: contain;
       border-radius: 16px;
     }
+
     .feature-content {
       flex: 1;
       padding: 2rem;
@@ -116,6 +137,7 @@
       justify-content: center;
       gap: 1.5rem;
     }
+
     .pink-card {
       background: linear-gradient(135deg, var(--accent1), var(--accent3));
       padding: 1.5rem;
@@ -123,18 +145,21 @@
       color: #fff;
       max-width: 320px;
       position: relative;
-      box-shadow: 0 8px 20px rgba(240,5,150,0.3);
+      box-shadow: 0 8px 20px rgba(240, 5, 150, 0.3);
     }
+
     .pink-card h3 {
       margin-bottom: 0.5rem;
       font-size: 1.3rem;
       font-weight: 600;
     }
+
     .pink-card p {
       font-size: 0.95rem;
       line-height: 1.4;
       opacity: 0.9;
     }
+
     .pink-card .arrow {
       position: absolute;
       top: 1rem;
@@ -142,28 +167,33 @@
       font-size: 1.2rem;
       opacity: 0.8;
     }
+
     .feature-stats {
       display: flex;
       gap: 2rem;
       margin-top: 1rem;
       flex-wrap: wrap;
     }
+
     .stat-item {
       text-align: left;
       min-width: 100px;
     }
+
     .stat-item h4 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 0.2rem;
       color: var(--accent1);
-      text-shadow: 0 2px 10px rgba(240,5,150,0.5);
+      text-shadow: 0 2px 10px rgba(240, 5, 150, 0.5);
     }
+
     .stat-item p {
       font-size: 0.9rem;
       color: #aaa;
       line-height: 1.4;
     }
+
     /* ====== LINKS SECTION ====== */
     .links-section {
       background: #0a0a0a;
@@ -172,17 +202,20 @@
       margin: 0 auto;
       text-align: center;
     }
+
     .section-title {
       font-size: 2.2rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      text-shadow: 0 4px 20px rgba(91,14,189,0.3);
+      text-shadow: 0 4px 20px rgba(91, 14, 189, 0.3);
     }
+
     .section-subtitle {
       font-size: 1rem;
       color: #aaa;
       margin-bottom: 2rem;
     }
+
     .subscription-container {
       display: inline-flex;
       flex-wrap: wrap;
@@ -191,6 +224,7 @@
       padding: 2rem;
       margin: 0 auto;
     }
+
     .subscription-box {
       display: flex;
       align-items: center;
@@ -203,27 +237,31 @@
       color: #fff;
       background: linear-gradient(135deg, #7E17F2, #FF00E6);
       border: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s, box-shadow 0.3s;
     }
+
     .subscription-box:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     }
+
     .subscription-box span {
       font-weight: 600;
       font-size: 0.95rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       max-width: 100%;
       text-align: center;
     }
+
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.85rem;
       color: #666;
     }
-    /* ====== MEDIA QUERIES برای موبایل ====== */
+
+    /* ====== MEDIA QUERY برای تبلت و موبایل‌های متوسط (حداکثر ۷۶۸ پیکسل) ====== */
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2.5rem;
@@ -231,9 +269,14 @@
       .hero p {
         font-size: 1rem;
       }
+      .cta-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
       .feature-container {
         flex-direction: column;
         min-height: auto;
+        margin: 1rem auto;
       }
       .feature-img-wrapper {
         max-width: 80%;
@@ -243,6 +286,9 @@
         width: 100%;
         align-items: center;
         padding: 1rem;
+      }
+      .pink-card {
+        margin: 1rem auto;
       }
       .stat-item {
         text-align: center;
@@ -255,6 +301,29 @@
         padding: 1rem;
       }
     }
+
+    /* ====== MEDIA QUERY برای موبایل‌های کوچک‌تر (حداکثر ۴۸۰ پیکسل) ====== */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      .cta-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+      }
+      .pink-card {
+        max-width: 260px;
+        margin: 1rem auto;
+      }
+      .subscription-box {
+        width: 90px;
+        height: 90px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -262,7 +331,10 @@
   <section class="hero">
     <h1>ProCreative VPN</h1>
     <p>Secure, Modern, and Free</p>
-    <button class="cta-btn" onclick="document.getElementById('feature').scrollIntoView({ behavior: 'smooth' });">
+    <button
+      class="cta-btn"
+      onclick="document.getElementById('feature').scrollIntoView({ behavior: 'smooth' });"
+    >
       Discover More
     </button>
   </section>
@@ -271,13 +343,20 @@
   <section class="feature-section" id="feature">
     <div class="feature-container">
       <div class="feature-img-wrapper">
-        <img src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg" alt="Security Icon" />
+        <!-- لینک عکس را به نسخه آپلود شده در Postimage تغییر داده‌ایم -->
+        <img
+          src="https://i.postimg.cc/28CJ2HQh/3d-cyber-security-3d-icon-249956-407.jpg"
+          alt="Security Icon"
+        />
       </div>
       <div class="feature-content">
         <div class="pink-card">
           <div class="arrow">⤴</div>
           <h3>High-Level Security</h3>
-          <p>Protect your data and privacy with next-gen encryption and ultra-fast servers.</p>
+          <p>
+            Protect your data and privacy with next-gen encryption and
+            ultra-fast servers.
+          </p>
         </div>
         <div class="feature-stats">
           <div class="stat-item">
@@ -309,9 +388,9 @@
   <script>
     // نمونه: خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
     fetch('sub.txt')
-      .then(response => response.text())
-      .then(data => {
-        const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
+      .then((response) => response.text())
+      .then((data) => {
+        const lines = data.split(/\r?\n/).filter((line) => line.trim() !== '');
         const container = document.getElementById('links');
         lines.forEach((line, index) => {
           const box = document.createElement('div');
@@ -319,15 +398,18 @@
           const textSpan = document.createElement('span');
           textSpan.textContent = `UltraVPN #${index + 1}`;
           box.appendChild(textSpan);
+
           box.addEventListener('click', () => {
-            navigator.clipboard.writeText(line)
+            navigator.clipboard
+              .writeText(line)
               .then(() => alert('Link copied to clipboard!'))
-              .catch(err => console.error('Failed to copy link:', err));
+              .catch((err) => console.error('Failed to copy link:', err));
           });
+
           container.appendChild(box);
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching sub.txt:', error);
       });
   </script>
