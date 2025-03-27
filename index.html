@@ -20,9 +20,10 @@
       --accent2: #8e2de2;
       --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
-      /* گرادیان‌های تازه برای باکس‌ها را می‌توان اینجا تعریف کرد */
-      --box-gradient1: #ff8a00; /* نارنجی */
-      --box-gradient2: #e52e71; /* صورتی/قرمز گرادینت */
+      
+      /* نمونه‌ای از گرادیان مدرن‌تر برای باکس‌ها */
+      --box-gradient1: #743ad5; /* بنفش تیره */
+      --box-gradient2: #d53a9d; /* صورتی/بنفش روشن */
     }
 
     * {
@@ -200,27 +201,27 @@
       margin-bottom: 2rem;
     }
 
-    /* 
-      تغییر اصلی: 
-      1) باکس‌ها را در یک ردیف نمایش می‌دهیم (flex-nowrap)
-      2) اندازه مربع‌ها را کوچک می‌کنیم (120 در 120)
-      3) گرادینت جدید 
+    /*
+      1) از حالت nowrap خارج شد تا باکس‌ها در مرکز چیده شوند.
+      2) justify-content: center برای مرکزگرایی.
+      3) اگر می‌خواهید اسکرول افقی داشته باشید، می‌توانید overflow-x: auto; و flex-wrap: nowrap را برگردانید.
     */
     .subscription-container {
       display: flex;
-      flex-wrap: nowrap;       /* هیچ‌وقت به خط بعد نرود */
+      flex-wrap: wrap;
       gap: 16px;
-      overflow-x: auto;        /* اگر تعداد باکس‌ها زیاد بود اسکرول افقی */
       margin: 0 auto;
       padding: 1rem;
-      justify-content: flex-start;
+      justify-content: center;
+      align-items: center;
+      max-width: 900px; /* می‌توانید بسته به سلیقه تغییر دهید */
     }
 
     /* ====== SUBSCRIPTION BOX (Glass + New Gradient) ====== */
     .subscription-box {
       position: relative;
       width: 120px;
-      min-width: 120px;        /* تا در flex منقبض نشود */
+      min-width: 120px;
       height: 120px;
       display: flex;
       align-items: center;
@@ -228,12 +229,12 @@
       text-align: center;
       color: #fff;
       cursor: pointer;
-      border-radius: 14px;     /* کمی کمتر از قبل برای زیبایی */
+      border-radius: 14px;
       overflow: hidden;
       background:
         /* لایه شفاف رویی */
         linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        /* گرادینت تازه - بین نارنجی و قرمز/صورتی */
+        /* گرادینت جدید با رنگ‌های مدرن‌تر */
         linear-gradient(135deg, var(--box-gradient1), var(--box-gradient2)) border-box;
       border: 2px solid transparent;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
@@ -244,7 +245,6 @@
       content: "";
       position: absolute;
       inset: 0;
-      /* انیمیشن گرادینت کم‌رنگ پس‌زمینه */
       background: linear-gradient(45deg, #111, #330a4e);
       background-size: 200% 200%;
       opacity: 0.2; 
@@ -262,7 +262,7 @@
     }
     .subscription-box span {
       padding: 0 10px;
-      font-size: 0.9rem;  /* چون باکس کوچک‌تر شده، سایز فونت هم کاهش یابد */
+      font-size: 0.9rem;
       font-weight: 700;
       line-height: 1.4;
       z-index: 1;
