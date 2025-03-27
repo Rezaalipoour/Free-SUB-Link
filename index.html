@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- تگ viewport برای موبایل -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modern VPN Subscription</title>
   <!-- اضافه‌کردن لوگوی فاوآیکن در تب مرورگر -->
   <link rel="icon" href="https://picodl.com/download/simple-elegant-abstract-letter-shield-logo_327835-8839.jpg" type="image/png">
-
   <!-- گوگل فونت -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
 
   <style>
     :root {
@@ -23,7 +21,9 @@
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
     }
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
     body {
@@ -31,7 +31,6 @@
       color: var(--text-color);
       overflow-x: hidden;
     }
-
     /* ====== هدر (Hero) ====== */
     .hero {
       background: var(--gradient-hero);
@@ -44,16 +43,26 @@
       padding: 0 1rem;
     }
     .hero h1 {
-      font-size: 4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2;
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
       text-shadow: 0 4px 20px rgba(91,14,189,0.6);
     }
     .hero p {
-      font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; color: #ccc;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      color: #ccc;
     }
     .cta-btn {
       padding: 1rem 2rem;
       background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      border: none; border-radius: 50px; font-weight: 600; color: #fff; cursor: pointer;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 4px 15px rgba(240,5,150,0.3);
     }
@@ -61,91 +70,137 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 20px rgba(240,5,150,0.4);
     }
-
     /* ====== FEATURE SECTION ====== */
     .feature-section {
       background: #0a0a0a;
-      display: flex; justify-content: center; padding: 3rem 1rem;
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem;
     }
     .feature-container {
       background: #000;
       border: 2px solid #333;
       border-radius: 16px;
-      width: 90%; max-width: 1100px; min-height: 300px;
-      display: flex; flex-direction: row; align-items: center; overflow: hidden;
+      width: 90%;
+      max-width: 1100px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow: hidden;
       position: relative;
       box-shadow: 0 4px 30px rgba(0,0,0,0.7);
       margin: 2rem auto;
     }
     .feature-img-wrapper {
-      flex: 1; max-width: 60%;
-      display: flex; align-items: center; justify-content: center;
+      flex: 1;
+      max-width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: #000;
-      border-radius: 16px; margin: 1rem;
+      border-radius: 16px;
+      margin: 1rem;
     }
     .feature-img-wrapper img {
-      width: 100%; height: auto; object-fit: contain; border-radius: 16px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
     }
     .feature-content {
-      flex: 1; padding: 2rem;
-      display: flex; flex-direction: column; justify-content: center; gap: 1.5rem;
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
     }
     .pink-card {
       background: linear-gradient(135deg, var(--accent1), var(--accent3));
-      padding: 1.5rem; border-radius: 16px; color: #fff; max-width: 320px; position: relative;
+      padding: 1.5rem;
+      border-radius: 16px;
+      color: #fff;
+      max-width: 320px;
+      position: relative;
       box-shadow: 0 8px 20px rgba(240,5,150,0.3);
     }
     .pink-card h3 {
-      margin-bottom: 0.5rem; font-size: 1.3rem; font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
     }
     .pink-card p {
-      font-size: 0.95rem; line-height: 1.4; opacity: 0.9;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      opacity: 0.9;
     }
     .pink-card .arrow {
-      position: absolute; top: 1rem; right: 1rem; font-size: 1.2rem; opacity: 0.8;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.2rem;
+      opacity: 0.8;
     }
     .feature-stats {
-      display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap;
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
     }
     .stat-item {
-      text-align: left; min-width: 100px;
+      text-align: left;
+      min-width: 100px;
     }
     .stat-item h4 {
-      font-size: 2rem; font-weight: 800; margin-bottom: 0.2rem; color: var(--accent1);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+      color: var(--accent1);
       text-shadow: 0 2px 10px rgba(240,5,150,0.5);
     }
     .stat-item p {
-      font-size: 0.9rem; color: #aaa; line-height: 1.4;
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.4;
     }
-    @media (max-width: 768px) {
-      .feature-container { flex-direction: column; min-height: auto; }
-      .feature-img-wrapper { max-width: 80%; }
-      .feature-content { width: 100%; align-items: center; }
-      .stat-item { text-align: center; }
-    }
-
     /* ====== LINKS SECTION ====== */
     .links-section {
       background: #0a0a0a;
-      width: 100%; padding: 3rem 1rem 4rem; margin: 0 auto; text-align: center;
+      width: 100%;
+      padding: 3rem 1rem 4rem;
+      margin: 0 auto;
+      text-align: center;
     }
     .section-title {
-      font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
       text-shadow: 0 4px 20px rgba(91,14,189,0.3);
     }
     .section-subtitle {
-      font-size: 1rem; color: #aaa; margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 2rem;
     }
     .subscription-container {
-      display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
-      padding: 2rem; margin: 0 auto;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      margin: 0 auto;
     }
     .subscription-box {
-      display: flex; align-items: center; justify-content: center;
-      width: 120px; height: 120px; cursor: pointer; text-align: center;
-      border-radius: 20px;  /* گوشه‌های گردتر */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 20px;
       color: #fff;
-      /* گرادیان تندتر و مدرن‌تر */
       background: linear-gradient(135deg, #7E17F2, #FF00E6);
       border: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
@@ -156,18 +211,53 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
     .subscription-box span {
-      font-weight: 600; font-size: 0.95rem;
+      font-weight: 600;
+      font-size: 0.95rem;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      max-width: 100%; text-align: center;
+      max-width: 100%;
+      text-align: center;
     }
-
     footer {
-      text-align: center; padding: 1rem; font-size: 0.85rem; color: #666;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    /* ====== MEDIA QUERIES برای موبایل ====== */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .feature-container {
+        flex-direction: column;
+        min-height: auto;
+      }
+      .feature-img-wrapper {
+        max-width: 80%;
+        margin: 1rem auto;
+      }
+      .feature-content {
+        width: 100%;
+        align-items: center;
+        padding: 1rem;
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .subscription-box {
+        width: 100px;
+        height: 100px;
+      }
+      .subscription-container {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <!-- هدر (Hero) -->
   <section class="hero">
     <h1>ProCreative VPN</h1>
@@ -181,10 +271,7 @@
   <section class="feature-section" id="feature">
     <div class="feature-container">
       <div class="feature-img-wrapper">
-        <img
-          src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg"
-          alt="Security Icon"
-        />
+        <img src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg" alt="Security Icon" />
       </div>
       <div class="feature-content">
         <div class="pink-card">
@@ -210,7 +297,6 @@
   <section class="links-section" id="links-section">
     <h2 class="section-title">Modern VPN Links</h2>
     <p class="section-subtitle">Click on any box to copy your link</p>
-
     <div class="subscription-container" id="links">
       <!-- باکس‌های لینک با جاوااسکریپت اضافه می‌شوند -->
     </div>
@@ -227,21 +313,17 @@
       .then(data => {
         const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
         const container = document.getElementById('links');
-
         lines.forEach((line, index) => {
           const box = document.createElement('div');
           box.className = 'subscription-box';
-
           const textSpan = document.createElement('span');
           textSpan.textContent = `UltraVPN #${index + 1}`;
           box.appendChild(textSpan);
-
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
               .catch(err => console.error('Failed to copy link:', err));
           });
-
           container.appendChild(box);
         });
       })
