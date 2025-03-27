@@ -119,6 +119,7 @@
       border-radius: 16px;
       margin: 1rem;
     }
+    /* اندازه تصویر در دسکتاپ به صورت عادی */
     .feature-img-wrapper img {
       width: 100%;
       height: auto;
@@ -210,6 +211,7 @@
       margin: 0 auto;
     }
 
+    /* باکس‌های سرور: رنگ بنفش ساده + انیمیشن نرم با استفاده از transition */
     .subscription-box {
       display: flex;
       align-items: center;
@@ -220,20 +222,21 @@
       text-align: center;
       border-radius: 20px;
       color: #fff;
-      background: linear-gradient(135deg, #7E17F2, #FF00E6);
+      background: #5B0EBD; /* بنفش ساده */
       border: none;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
+      /* انیمیشن نرم روی پس‌زمینه و بوردر */
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border 0.3s;
+      user-select: none; /* جلوگیری از انتخاب متن با لمس */
     }
     .subscription-box:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     }
     .subscription-box:active {
-      /* حالت کلیک: پس‌زمینه مشکی، بوردر نازک، متن سفید */
-      background: #000;
-      border: 1px solid #5B0EBD;
-      color: #fff;
+      background: #000;             /* توخالی (مشکی) در لحظه کلیک */
+      border: 1px solid #5B0EBD;   /* بوردر نازک بنفش */
+      color: #fff;                 /* متن سفید بماند */
     }
     .subscription-box span {
       font-weight: 600;
@@ -270,11 +273,10 @@
         min-height: auto;
         margin: 1rem auto;
       }
-      /* آبجکت سه‌بعدی بزرگ‌تر در موبایل/تبلت */
+      /* آبجکت سه‌بعدی بزرگ‌تر در تبلت */
       .feature-img-wrapper img {
-        width: 120%;
+        width: 150%;
       }
-      /* کوچک‌تر شدن متن بخش امنیت و آمارها */
       .pink-card h3 {
         font-size: 1.1rem;
       }
@@ -290,7 +292,6 @@
       .stat-item p {
         font-size: 0.8rem;
       }
-      /* باکس‌های لینک */
       .subscription-box {
         width: 100px;
         height: 100px;
@@ -318,9 +319,9 @@
         padding: 0.7rem 1rem;
         font-size: 0.9rem;
       }
-      /* آبجکت سه‌بعدی بزرگ‌تر در گوشی‌های کوچکتر */
+      /* آبجکت سه‌بعدی بسیار بزرگ‌تر در گوشی */
       .feature-img-wrapper img {
-        width: 140%;
+        width: 180%;
       }
       .pink-card {
         max-width: 260px;
@@ -338,7 +339,6 @@
       .stat-item p {
         font-size: 0.75rem;
       }
-      /* باکس‌های لینک و متن داخلشان کوچکتر */
       .subscription-box {
         width: 90px;
         height: 90px;
@@ -366,7 +366,6 @@
   <section class="feature-section" id="feature">
     <div class="feature-container">
       <div class="feature-img-wrapper">
-        <!-- لینک عکس آپلود شده در Postimage -->
         <img
           src="https://i.postimg.cc/28CJ2HQh/3d-cyber-security-3d-icon-249956-407.jpg"
           alt="Security Icon"
@@ -409,7 +408,7 @@
   </footer>
 
   <script>
-    // فقط عملیات کپی به کلیپ‌بورد انجام می‌شود؛ تغییری در ظاهر باکس نمی‌دهیم.
+    // خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
     fetch("sub.txt")
       .then((response) => response.text())
       .then((data) => {
@@ -420,12 +419,12 @@
           const box = document.createElement("div");
           box.className = "subscription-box";
 
-          // تغییر متن باکس‌ها به "Server 1", "Server 2", ...
+          // عنوان باکس: Server 1, Server 2, ...
           const textSpan = document.createElement("span");
           textSpan.textContent = `Server ${index + 1}`;
           box.appendChild(textSpan);
 
-          // کپی به کلیپ‌بورد بدون نمایش پیام
+          // کپی لینک از sub.txt به کلیپ‌بورد
           box.addEventListener("click", () => {
             navigator.clipboard
               .writeText(line)
