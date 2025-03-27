@@ -14,14 +14,15 @@
 
   <style>
     :root {
-      --bg-color: #0a0a0a;       /* رنگ پس‌زمینه کلی */
-      --text-color: #fff;        /* رنگ پیش‌فرض متن */
-      --accent1: #f00596;        /* رنگ گرادینت اول */
-      --accent2: #8e2de2;        /* رنگ گرادینت دوم */
-      --accent3: #5B0EBD;        /* رنگ گرادینت سومی */
+      --bg-color: #0a0a0a;
+      --text-color: #fff;
+      --accent1: #f00596;
+      --accent2: #8e2de2;
+      --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
-      --gradient-border1: #04000c;
-      --gradient-border2: #2b0c58;
+      /* گرادیان‌های تازه برای باکس‌ها را می‌توان اینجا تعریف کرد */
+      --box-gradient1: #ff8a00; /* نارنجی */
+      --box-gradient2: #e52e71; /* صورتی/قرمز گرادینت */
     }
 
     * {
@@ -199,44 +200,52 @@
       margin-bottom: 2rem;
     }
 
+    /* 
+      تغییر اصلی: 
+      1) باکس‌ها را در یک ردیف نمایش می‌دهیم (flex-nowrap)
+      2) اندازه مربع‌ها را کوچک می‌کنیم (120 در 120)
+      3) گرادینت جدید 
+    */
     .subscription-container {
-      max-width: 1200px;
+      display: flex;
+      flex-wrap: nowrap;       /* هیچ‌وقت به خط بعد نرود */
+      gap: 16px;
+      overflow-x: auto;        /* اگر تعداد باکس‌ها زیاد بود اسکرول افقی */
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 30px;
-      padding: 0 1rem;
-      justify-items: center;
+      padding: 1rem;
+      justify-content: flex-start;
     }
 
-    /* ====== SUBSCRIPTION BOX (Glass + Gradient) ====== */
+    /* ====== SUBSCRIPTION BOX (Glass + New Gradient) ====== */
     .subscription-box {
       position: relative;
-      width: 220px;
-      height: 220px;
+      width: 120px;
+      min-width: 120px;        /* تا در flex منقبض نشود */
+      height: 120px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: #fff;
       cursor: pointer;
-      border-radius: 20px;
+      border-radius: 14px;     /* کمی کمتر از قبل برای زیبایی */
       overflow: hidden;
-      /* پس‌زمینه دو لایه: شفاف+گرادینت */
       background:
+        /* لایه شفاف رویی */
         linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        linear-gradient(135deg, #120b28, #3e1072) border-box;
+        /* گرادینت تازه - بین نارنجی و قرمز/صورتی */
+        linear-gradient(135deg, var(--box-gradient1), var(--box-gradient2)) border-box;
       border: 2px solid transparent;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    /* انیمیشن پس‌زمینه گرادینت داخل کارت */
     .subscription-box::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(45deg, var(--gradient-border1), var(--gradient-border2));
+      /* انیمیشن گرادینت کم‌رنگ پس‌زمینه */
+      background: linear-gradient(45deg, #111, #330a4e);
       background-size: 200% 200%;
       opacity: 0.2; 
       z-index: -1;
@@ -248,12 +257,12 @@
       100% { background-position: 0% 50%; }
     }
     .subscription-box:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
     .subscription-box span {
       padding: 0 10px;
-      font-size: 1.2rem;
+      font-size: 0.9rem;  /* چون باکس کوچک‌تر شده، سایز فونت هم کاهش یابد */
       font-weight: 700;
       line-height: 1.4;
       z-index: 1;
