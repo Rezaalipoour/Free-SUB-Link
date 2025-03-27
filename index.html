@@ -263,9 +263,9 @@
         min-height: auto;
         margin: 1rem auto;
       }
-      /* آبجکت سه‌بعدی کمی بزرگ‌تر در موبایل/تبلت */
+      /* آبجکت سه‌بعدی بزرگ‌تر در موبایل/تبلت */
       .feature-img-wrapper img {
-        width: 105%;
+        width: 110%; /* افزایش نسبت به 100% */
       }
       /* کوچک‌تر شدن متن بخش امنیت و آمارها */
       .pink-card h3 {
@@ -311,9 +311,9 @@
         padding: 0.7rem 1rem;
         font-size: 0.9rem;
       }
-      /* آبجکت سه‌بعدی کمی بزرگ‌تر در گوشی‌های کوچکتر */
+      /* آبجکت سه‌بعدی بزرگ‌تر در گوشی‌های کوچکتر */
       .feature-img-wrapper img {
-        width: 110%;
+        width: 120%;
       }
       .pink-card {
         max-width: 260px;
@@ -413,8 +413,9 @@
           const box = document.createElement("div");
           box.className = "subscription-box";
 
+          // تغییر متن باکس‌ها به "Server 1", "Server 2", ...
           const textSpan = document.createElement("span");
-          textSpan.textContent = `UltraVPN #${index + 1}`;
+          textSpan.textContent = `Server ${index + 1}`;
           box.appendChild(textSpan);
 
           box.addEventListener("click", () => {
