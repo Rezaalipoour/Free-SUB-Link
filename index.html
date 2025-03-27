@@ -265,7 +265,7 @@
       }
       /* آبجکت سه‌بعدی بزرگ‌تر در موبایل/تبلت */
       .feature-img-wrapper img {
-        width: 110%; /* افزایش نسبت به 100% */
+        width: 120%;
       }
       /* کوچک‌تر شدن متن بخش امنیت و آمارها */
       .pink-card h3 {
@@ -283,7 +283,7 @@
       .stat-item p {
         font-size: 0.8rem;
       }
-      /* باکس‌های لینک کمی کوچک‌تر */
+      /* باکس‌های لینک */
       .subscription-box {
         width: 100px;
         height: 100px;
@@ -313,7 +313,7 @@
       }
       /* آبجکت سه‌بعدی بزرگ‌تر در گوشی‌های کوچکتر */
       .feature-img-wrapper img {
-        width: 120%;
+        width: 140%;
       }
       .pink-card {
         max-width: 260px;
@@ -402,7 +402,7 @@
   </footer>
 
   <script>
-    // نمونه: خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
+    // خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
     fetch("sub.txt")
       .then((response) => response.text())
       .then((data) => {
@@ -421,7 +421,12 @@
           box.addEventListener("click", () => {
             navigator.clipboard
               .writeText(line)
-              .then(() => alert("Link copied to clipboard!"))
+              .then(() => {
+                // تغییر ظاهر باکس پس از کلیک:
+                box.innerHTML = "";
+                box.style.background = "#000";
+                box.style.border = "1px solid #5B0EBD";
+              })
               .catch((err) => console.error("Failed to copy link:", err));
           });
 
