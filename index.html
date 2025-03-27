@@ -59,14 +59,14 @@
       padding: 0 1rem;
     }
     .hero h1 {
-      font-size: 3rem; /* کمی کوچک‌تر از نسخه قبلی */
+      font-size: 3rem; /* در دسکتاپ: کمی کوچک‌تر از حالت خیلی بزرگ */
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
       text-shadow: 0 4px 20px rgba(91, 14, 189, 0.6);
     }
     .hero p {
-      font-size: 1.1rem; /* کمی کوچک‌تر از نسخه قبلی */
+      font-size: 1.1rem;
       margin-bottom: 2rem;
       opacity: 0.9;
       color: #ccc;
@@ -201,14 +201,11 @@
       margin-bottom: 2rem;
     }
 
-    /*
-      استفاده از CSS Grid برای چیدن باکس‌ها در 4 ستون
-      gap: فاصله بین باکس‌ها
-    */
+    /* استفاده از Grid برای 4 ستون با فاصله (gap) مناسب */
     .subscription-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1rem;  /* فاصله بین باکس‌ها در دسکتاپ */
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -229,8 +226,9 @@
 
       /* تغییر رنگ و بوردر به صورت نرم */
       transition: background 0.6s, border 0.6s;
+      /* برای موبایل که رویداد pointer را نادیده نگیرد */
+      touch-action: none;
     }
-
     .subscription-box span {
       font-weight: 600;
       font-size: 0.95rem;
@@ -238,11 +236,7 @@
       max-width: 100%;
       text-align: center;
     }
-
-    /*
-      حالت کلیک: مشکی + بوردر بنفش
-      پس از برداشتن انگشت، با کمی مکث برمی‌گردد
-    */
+    /* حالت کلیک: مشکی + بوردر بنفش، بعد مکث به حالت اولیه */
     .subscription-box.box-active {
       background: #000;
       border: 1px solid #5B0EBD;
@@ -261,10 +255,10 @@
         min-height: 60vh;
       }
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem; /* در تبلت کمی بزرگ‌تر از نسخه دسکتاپ */
       }
       .hero p {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
       .feature-container {
         flex-direction: column;
@@ -285,7 +279,6 @@
       .stat-item p {
         font-size: 0.8rem;
       }
-      /* ارتفاع باکس‌های لینک کمی کمتر */
       .subscription-box {
         height: 100px;
       }
@@ -300,12 +293,11 @@
         min-height: 55vh;
       }
       .hero h1 {
-        font-size: 2rem;
+        font-size: 3rem; /* بزرگ‌تر در موبایل طبق درخواست */
       }
       .hero p {
-        font-size: 0.9rem;
+        font-size: 1.2rem;
       }
-      /* آبجکت سه‌بعدی خیلی بزرگ در گوشی */
       .feature-img-wrapper img {
         width: 180%;
       }
@@ -325,9 +317,14 @@
       .stat-item p {
         font-size: 0.75rem;
       }
-      /* باکس‌های لینک و متن داخلشان کوچک‌تر */
+
+      /* فاصله بیشتر از کناره‌ها + فاصله کمتر بین باکس‌ها در گوشی */
+      .subscription-container {
+        margin: 0 1rem;    /* فاصله از کناره‌های موبایل */
+        gap: 0.5rem;       /* کاهش فاصله بین باکس‌ها */
+      }
       .subscription-box {
-        height: 90px;
+        height: 90px;      /* کمی کوچک‌تر */
       }
       .subscription-box span {
         font-size: 0.75rem;
@@ -392,15 +389,15 @@
   </footer>
 
   <script>
-    // تابع برای افزودن کلاس box-active هنگام کلیک (pointerdown)
+    // حالت کلیک برای باکس‌ها
     function handlePointerDown(e) {
       e.currentTarget.classList.add('box-active');
     }
-    // تابع برای حذف کلاس box-active پس از مکث (pointerup)
     function handlePointerUp(e) {
+      // کمی مکث، سپس به حالت اول برگرد
       setTimeout(() => {
         e.currentTarget.classList.remove('box-active');
-      }, 500); // نیم ثانیه مکث تا حس نرم داشته باشد
+      }, 500);
     }
     function handlePointerCancel(e) {
       e.currentTarget.classList.remove('box-active');
@@ -421,19 +418,23 @@
           textSpan.textContent = `Server ${index + 1}`;
           box.appendChild(textSpan);
 
-          // کپی لینک از sub.txt به کلیپ‌بورد
+          // کپی لینک به کلیپ‌بورد
           box.addEventListener("click", () => {
             navigator.clipboard
               .writeText(line)
               .catch((err) => console.error("Failed to copy link:", err));
           });
 
-          // حالت کلیک نرم:
+          // برای کار در موبایل/دسکتاپ: pointerdown, touchstart
           box.addEventListener('pointerdown', handlePointerDown);
           box.addEventListener('pointerup', handlePointerUp);
           box.addEventListener('pointercancel', handlePointerCancel);
-          // اگر کاربر انگشتش را بیرون باکس بکشد:
           box.addEventListener('pointerleave', handlePointerCancel);
+
+          // رویدادهای لمسی (fallback) اگر گوشی pointer را پشتیبانی نکند
+          box.addEventListener('touchstart', handlePointerDown);
+          box.addEventListener('touchend', handlePointerUp);
+          box.addEventListener('touchcancel', handlePointerCancel);
 
           container.appendChild(box);
         });
