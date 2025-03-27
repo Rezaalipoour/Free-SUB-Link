@@ -18,7 +18,6 @@
     }
 
     body {
-      /* رنگ پس‌زمینه‌ای کمی تیره که در گرادیان هدر هم وجود دارد */
       background-color: #0a0a0a; 
       color: #fff;
       overflow-x: hidden;
@@ -29,7 +28,6 @@
 
     /* ====== 1) HERO SECTION ====== */
     .hero {
-      /* گرادیان پس‌زمینه تیره به بنفش برای هدر */
       background: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
       min-height: 80vh;
       display: flex;
@@ -45,7 +43,6 @@
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
-      /* کمی افکت نور برای تیتر */
       text-shadow: 0 4px 20px rgba(91,14,189,0.6);
     }
     .hero p {
@@ -56,7 +53,6 @@
     }
     .cta-btn {
       padding: 1rem 2rem;
-      /* رنگ اصلی اکشن: گرادیان صورتی-بنفش */
       background: linear-gradient(135deg, #f00596, #8e2de2);
       border: none;
       border-radius: 50px;
@@ -78,7 +74,6 @@
       padding: 3rem 1rem;
     }
     .feature-container {
-      /* با رنگ نزدیک به پس‌زمینه و اندکی تیره‌تر برای جدا شدن بخش */
       background: #0a0a0a;
       border-radius: 24px;
       width: 90%;
@@ -105,7 +100,6 @@
       justify-content: center;
       gap: 1.5rem;
     }
-    /* کارت گرادیانی برای برجسته کردن یک نکته مهم */
     .pink-card {
       background: linear-gradient(135deg, #f00596, #5B0EBD);
       padding: 1.5rem;
@@ -136,7 +130,7 @@
       display: flex;
       gap: 2rem;
       margin-top: 1rem;
-      flex-wrap: wrap; /* اگر فضای کم باشد، المان‌ها به خط بعد بروند */
+      flex-wrap: wrap;
     }
     .stat-item {
       text-align: left;
@@ -146,7 +140,6 @@
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 0.2rem;
-      /* تاکید بر رنگ صورتی */
       color: #f00596;
       text-shadow: 0 2px 10px rgba(240,5,150,0.5);
     }
@@ -204,32 +197,32 @@
     .subscription-box {
       position: relative;
       width: 220px;
-      height: 220px; 
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: #fff;
       cursor: pointer;
-      border-radius: 20px; 
+      border-radius: 20px;
       overflow: hidden;
-      /* حاشیه گرادیانی شفاف + شیشه‌ای */
-      background: 
-        linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.05)) padding-box,
-        linear-gradient(135deg, #5B0EBD, #f00596) border-box;
+      /* گرادیان ملایم‌تر */
+      background:
+        linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
+        linear-gradient(135deg, #6a3093, #a044ff) border-box;
       border: 2px solid transparent;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       backdrop-filter: blur(10px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    /* انیمیشن ملایم پس‌زمینه داخلی */
     .subscription-box::before {
       content: "";
       position: absolute;
       inset: 0;
+      /* کمی تیره‌تر کردن پس‌زمینه برای جلوه‌ی شیشه‌ای */
       background: linear-gradient(45deg, #000000, #5B0EBD);
       background-size: 200% 200%;
-      opacity: 0.3;
+      opacity: 0.25; 
       z-index: -1;
       animation: subtleMove 8s ease-in-out infinite;
     }
@@ -246,9 +239,9 @@
 
     .subscription-box span {
       padding: 0 10px;
-      font-size: 0.85rem;
+      font-size: 1.1rem; /* کمی بزرگ‌تر و خواناتر */
+      font-weight: 600;
       line-height: 1.4;
-      word-wrap: break-word;
       z-index: 1;
     }
 
@@ -275,7 +268,6 @@
   <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
-      <!-- بهتره عکس مرتبط با امنیت یا VPN جایگزین بشه -->
       <img
         src="https://images.pexels.com/photos/4450412/pexels-photo-4450412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
         alt="Security"
@@ -324,14 +316,19 @@
         const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
         const container = document.getElementById('links');
 
-        lines.forEach(line => {
+        lines.forEach((line, index) => {
           const box = document.createElement('div');
           box.className = 'subscription-box';
 
+          // متن نمایشی داخل باکس را بجای لینک واقعی، به صورت دلخواه می‌گذاریم.
+          // نمونه: Server #1, Server #2, ...
           const textSpan = document.createElement('span');
-          textSpan.textContent = line;
+          textSpan.textContent = `Server #${index + 1}`; 
+          // اگر بخواهید نام خاصی بگذارید، می‌توانید در اینجا مقدار دیگری قرار دهید.
+
           box.appendChild(textSpan);
 
+          // کپی کردن لینک واقعی (line) در کلیپ‌بورد
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
