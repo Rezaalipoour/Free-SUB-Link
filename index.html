@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Modern VPN Subscription - Soft Gradient</title>
-  <!-- Google Font (Inter) -->
+  <title>Modern VPN Subscription - Glass Cards</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
@@ -24,34 +23,31 @@
       text-decoration: none;
     }
 
-    /* =======================
-       1) HERO SECTION (نمونه ساده)
-    ======================== */
+    /* ====== 1) HERO SECTION (همان قبلی برای نمونه) ====== */
     .hero {
-      height: 60vh;
+      height: 80vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #0a0a0a, #49207a);
-      /* یک گرادینت تیره و ملایم از مشکی به بنفش تیره */
-      position: relative;
+      background: linear-gradient(135deg, #0a0a0a, #5B0EBD);
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
     }
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 2rem;
+      opacity: 0.9;
       color: #ccc;
     }
     .cta-btn {
       padding: 1rem 2rem;
-      background: #d9147f;
+      background: #f00596;
       border: none;
       border-radius: 50px;
       font-weight: 600;
@@ -61,12 +57,97 @@
     }
     .cta-btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(217, 20, 127, 0.4);
+      box-shadow: 0 8px 20px rgba(240,5,150,0.4);
     }
 
-    /* =======================
-       2) LINKS SECTION
-    ======================== */
+    /* ====== 2) FEATURE SECTION (برای نمونه مشابه قبل) ====== */
+    .feature-section {
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem;
+    }
+    .feature-container {
+      background: #000000;
+      border-radius: 24px;
+      width: 90%;
+      max-width: 1100px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .feature-container img {
+      flex: 1;
+      object-fit: cover;
+      width: 50%;
+      height: 100%;
+    }
+    .feature-content {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .pink-card {
+      background: linear-gradient(135deg, #f00596, #8e2de2);
+      padding: 1.5rem;
+      border-radius: 16px;
+      color: #fff;
+      max-width: 300px;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(240,5,150,0.3);
+    }
+    .pink-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .pink-card p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+    .pink-card .arrow {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.2rem;
+    }
+    .feature-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .stat-item h4 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+      color: #f00596;
+    }
+    .stat-item p {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .feature-container {
+        flex-direction: column;
+      }
+      .feature-container img {
+        width: 100%;
+        height: 200px;
+      }
+      .feature-content {
+        width: 100%;
+        align-items: center;
+      }
+    }
+
+    /* ====== 3) LINKS SECTION ====== */
     .links-section {
       padding: 3rem 1rem 4rem;
       max-width: 1300px;
@@ -84,77 +165,73 @@
       margin-bottom: 2rem;
     }
 
-    /* شبکهٔ کارت‌ها */
+    /* گرید نمایش باکس‌ها */
     .subscription-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      justify-items: center;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 30px;
       padding: 0 1rem;
+      justify-items: center;
     }
 
-    /* =======================
-       3) کارت‌های VPN
-    ======================== */
+    /* ======= GLASS + GRADIENT BORDER BOX ======= */
     .subscription-box {
       position: relative;
-      width: 220px;
-      height: 260px;
+      width: 200px;
+      height: 220px; /* کمی بلندتر تا متن بهتر جا شود */
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: #fff;
       cursor: pointer;
-      border-radius: 20px; /* گردتر شدن گوشه‌ها */
+      border-radius: 20px; /* شعاع گردتر برای زیبایی */
       overflow: hidden;
-      /* گرادینت ملایم از بنفش به صورتی */
-      background: linear-gradient(135deg, #8033cc, #e53eb6);
-      /* افکت شیشه: لایه رویی و بوردر شفاف (اختیاری) */
-      border: 2px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      /* ترفند ایجاد حاشیه‌ی گرادینتی شفاف */
+      background: 
+        linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)) padding-box,
+        linear-gradient(135deg, #5B0EBD, #f00596) border-box;
+      border: 2px solid transparent; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
+    /* انیمیشن ملایم پس‌زمینه‌ی درونی (میتوانید حذف کنید اگر نمی‌خواهید) */
+    .subscription-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, #000000, #5B0EBD);
+      background-size: 200% 200%;
+      opacity: 0.3;
+      z-index: -1;
+      animation: subtleMove 8s ease-in-out infinite;
+    }
+    @keyframes subtleMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .subscription-box:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 18px rgba(0,0,0,0.6);
     }
 
-    /* عنوان و لینک درون کارت */
-    .vpn-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .vpn-link {
-      font-size: 0.75rem;
-      line-height: 1.4;
-      max-width: 180px; /* تا متن خیلی بلند نشود */
-      word-wrap: break-word;
-      opacity: 0.9;
-      color: #fff;
+    .subscription-box span {
       padding: 0 10px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+      z-index: 1; /* برای قرارگیری روی ::before */
     }
 
-    /* =======================
-       4) FOOTER
-    ======================== */
+    /* ====== 4) FOOTER ====== */
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
       color: #666;
-    }
-
-    /* واکنشگرایی */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1rem; }
-      .subscription-box {
-        width: 180px;
-        height: 230px;
-      }
     }
   </style>
 </head>
@@ -163,18 +240,50 @@
   <!-- HERO -->
   <section class="hero">
     <h1>ProCreative VPN</h1>
-    <p>Secure, Fast, and Stylish</p>
-    <button class="cta-btn" onclick="document.getElementById('links-section').scrollIntoView({ behavior: 'smooth' });">
-      See Subscription Links
+    <p>Secure, Modern, and Free</p>
+    <button class="cta-btn" onclick="document.getElementById('feature').scrollIntoView({ behavior: 'smooth' });">
+      Discover More
     </button>
+  </section>
+
+  <!-- FEATURE SECTION -->
+  <section class="feature-section" id="feature">
+    <div class="feature-container">
+      <img
+        src="https://images.pexels.com/photos/4450412/pexels-photo-4450412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        alt="Building"
+      />
+      <div class="feature-content">
+        <div class="pink-card">
+          <div class="arrow">⤴</div>
+          <h3>From Vision to Structure</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas porttitor congue massa.
+          </p>
+        </div>
+        <div class="feature-stats">
+          <div class="stat-item">
+            <h4>47%</h4>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div class="stat-item">
+            <h4>4810</h4>
+            <p>Consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- LINKS SECTION -->
   <section class="links-section" id="links-section">
-    <h2 class="section-title">Available Links</h2>
-    <p class="section-subtitle">Click any card to copy its link</p>
+    <h2 class="section-title">Subscription Links</h2>
+    <p class="section-subtitle">Click any square to copy its link</p>
 
-    <div class="subscription-container" id="links"></div>
+    <div class="subscription-container" id="links">
+      <!-- Boxes appended by JavaScript -->
+    </div>
   </section>
 
   <footer>
@@ -182,37 +291,24 @@
   </footer>
 
   <script>
-    // دریافت محتوای sub.txt
+    // خواندن لینک‌ها از sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
         const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
-
         const container = document.getElementById('links');
 
-        // برای هر خط یک باکس می‌سازیم
-        lines.forEach((line, index) => {
+        lines.forEach(line => {
           const box = document.createElement('div');
           box.className = 'subscription-box';
 
-          // عنوان باکس (مثلاً Free VPN #1)
-          const title = document.createElement('div');
-          title.className = 'vpn-title';
-          title.textContent = `Free VPN #${index + 1}`;
+          const textSpan = document.createElement('span');
+          textSpan.textContent = line;
+          box.appendChild(textSpan);
 
-          // متن لینک کوچکتر در زیر
-          const linkText = document.createElement('div');
-          linkText.className = 'vpn-link';
-          linkText.textContent = line;
-
-          // درج در باکس
-          box.appendChild(title);
-          box.appendChild(linkText);
-
-          // رویداد کلیک برای کپی
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
-              .then(() => alert(`Link copied: ${line.substring(0, 20)}...`))
+              .then(() => alert('Link copied to clipboard!'))
               .catch(err => console.error('Failed to copy link:', err));
           });
 
