@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>لینک‌های اشتراک</title>
+  <style>
+    body {
+      direction: rtl;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    a {
+      display: block;
+      background: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      text-decoration: none;
+      color: #1a0dab;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      transition: background 0.2s;
+      direction: ltr;
+      word-break: break-all;
+    }
+    a:hover {
+      background-color: #e6f0ff;
+    }
+  </style>
 </head>
-<body style="font-family: Tahoma; direction: rtl; padding: 20px;">
-  <h2>🔗 لینک‌های اشتراک</h2>
-  <pre id="subs" style="background:#f4f4f4; padding:15px; border-radius:10px;"></pre>
+<body>
+  <h1>لینک‌های اشتراک</h1>
+  <div id="links">در حال بارگذاری...</div>
 
   <script>
-    fetch('sub.txt')
-      .then(response => response.text())
+    fetch("sub.txt")
+      .then(res => res.text())
       .then(data => {
-        document.getElementById('subs').textContent = data;
+        const links = data.split(/[\r\n]+/).filter(line => line.trim() !== "");
+        const container = document.getElementById("links");
+        container.innerHTML = "";
+        links.forEach(link => {
+          const a = document.createElement("a");
+          a.href = link;
+          a.textContent = link;
+          container.appendChild(a);
+        });
       })
-      .catch(error => {
-        document.getElementById('subs').textContent = "خطا در بارگذاری اشتراک‌ها!";
+      .catch(err => {
+        document.getElementById("links").innerText = "خطا در بارگذاری لینک‌ها!";
+        console.error(err);
       });
   </script>
 </body>
