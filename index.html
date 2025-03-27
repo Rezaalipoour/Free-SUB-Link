@@ -173,7 +173,7 @@
       text-align: center;
     }
     .section-title {
-      font-size: 2rem;
+      font-size: 2.2rem; /* کمی بزرگ‌تر برای تأکید */
       font-weight: 700;
       margin-bottom: 1rem;
       text-shadow: 0 4px 20px rgba(91,14,189,0.3);
@@ -184,10 +184,12 @@
       margin-bottom: 2rem;
     }
 
-    /* گرید نمایش باکس‌ها */
     .subscription-container {
+      /* عرض کنترل‌شده و ستون‌بندی 4تایی برای نمایشگرهای بزرگ */
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 30px;
       padding: 0 1rem;
       justify-items: center;
@@ -196,8 +198,8 @@
     /* ======= GLASS + GRADIENT BORDER BOX ======= */
     .subscription-box {
       position: relative;
-      width: 220px;
-      height: 220px;
+      width: 250px;
+      height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -206,23 +208,22 @@
       cursor: pointer;
       border-radius: 20px;
       overflow: hidden;
-      /* گرادیان ملایم‌تر */
+      /* گرادیان خیلی تیره‌تر با هاله بنفش */
       background:
         linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        linear-gradient(135deg, #6a3093, #a044ff) border-box;
+        linear-gradient(135deg, #120b28, #3e1072) border-box;
       border: 2px solid transparent;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .subscription-box::before {
       content: "";
       position: absolute;
       inset: 0;
-      /* کمی تیره‌تر کردن پس‌زمینه برای جلوه‌ی شیشه‌ای */
-      background: linear-gradient(45deg, #000000, #5B0EBD);
+      background: linear-gradient(45deg, #04000c, #2b0c58);
       background-size: 200% 200%;
-      opacity: 0.25; 
+      opacity: 0.2; 
       z-index: -1;
       animation: subtleMove 8s ease-in-out infinite;
     }
@@ -239,10 +240,11 @@
 
     .subscription-box span {
       padding: 0 10px;
-      font-size: 1.1rem; /* کمی بزرگ‌تر و خواناتر */
-      font-weight: 600;
+      font-size: 1.3rem; /* بزرگ‌تر و خواناتر */
+      font-weight: 700;
       line-height: 1.4;
       z-index: 1;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     /* ====== 4) FOOTER ====== */
@@ -320,15 +322,13 @@
           const box = document.createElement('div');
           box.className = 'subscription-box';
 
-          // متن نمایشی داخل باکس را بجای لینک واقعی، به صورت دلخواه می‌گذاریم.
-          // نمونه: Server #1, Server #2, ...
+          // به جای Server #n هر عنوان دیگری که خواستید بگذارید
           const textSpan = document.createElement('span');
-          textSpan.textContent = `Server #${index + 1}`; 
-          // اگر بخواهید نام خاصی بگذارید، می‌توانید در اینجا مقدار دیگری قرار دهید.
+          textSpan.textContent = `UltraVPN #${index + 1}`;
 
           box.appendChild(textSpan);
 
-          // کپی کردن لینک واقعی (line) در کلیپ‌بورد
+          // هنگام کلیک، لینک واقعی را کپی کند
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
