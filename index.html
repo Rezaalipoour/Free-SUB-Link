@@ -20,7 +20,6 @@
       --accent2: #8e2de2;
       --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
-      /* رنگ‌های گرادیان برای باکس‌ها را می‌توانید تغییر دهید */
       --box-gradient1: #8e2de2;
       --box-gradient2: #4a00e0;
     }
@@ -98,13 +97,31 @@
       position: relative;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
-    /* تصویر جایگزین‌شده */
-    .feature-container img {
-      flex: 1;
-      object-fit: cover;
-      width: 50%;
-      height: 100%;
+
+    /* ۱) ظرف مخصوص عکس برای تغییر سایز و بک‌گراند */
+    .feature-img-wrapper {
+      flex: 1;                  /* یک ستون از flex بگیرد */
+      max-width: 40%;           /* عکس نهایتاً ۴۰٪ کل عرض container باشد */
+      display: flex;            /* برای تراز بهتر */
+      align-items: center;
+      justify-content: center;
+      background-color: #1a1a1a; /* رنگ نزدیک به محیط تاریک سایت یا #0a0a0a */
+      border-radius: 20px;      /* کادر گرد برای عکس */
+      margin: 1rem;             /* کمی فاصله اطراف عکس */
+      box-shadow: 
+        0 0 20px rgba(240, 5, 150, 0.1),      /* سایه بیرونی کم‌رنگ */
+        inset 0 0 20px rgba(240, 5, 150, 0.05); /* سایه داخلی (inner glow) */
+      position: relative;
     }
+
+    /* ۲) عکس درون ظرف */
+    .feature-img-wrapper img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;   /* یا cover به دلخواه شما */
+      border-radius: 16px;   /* هم‌راستا با ظرف */
+    }
+
     .feature-content {
       flex: 1;
       padding: 2rem;
@@ -161,13 +178,14 @@
       color: #aaa;
       line-height: 1.4;
     }
+
     @media (max-width: 768px) {
       .feature-container {
         flex-direction: column;
+        min-height: auto;
       }
-      .feature-container img {
-        width: 100%;
-        height: 200px;
+      .feature-img-wrapper {
+        max-width: 80%;
       }
       .feature-content {
         width: 100%;
@@ -185,7 +203,6 @@
       margin: 0 auto;
       text-align: center; /* برای تیتر و توضیحات */
     }
-    /* عنوان مدرن‌تر */
     .section-title {
       font-size: 2.2rem;
       font-weight: 700;
@@ -198,10 +215,7 @@
       margin-bottom: 2rem;
     }
 
-    /*
-      برای وسط‌چین شدن باکس‌ها در صورت وجود فضای کافی
-      و اسکرول افقی در صورت کمبود فضا
-    */
+    /* باکس‌های لینک‌ها (inline-flex + scroll افقی در صورت کمبود فضا) */
     .subscription-container {
       display: block;
       white-space: nowrap;
@@ -210,9 +224,7 @@
       padding: 0;
       text-align: center;
     }
-
     .subscription-box {
-      /* به جای inline-block از inline-flex استفاده می‌کنیم تا راحت‌تر وسط‌چین عمودی شود */
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -234,14 +246,13 @@
       position: relative;
       text-align: center;
     }
-
     .subscription-box::before {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(45deg, #111, #330a4e);
       background-size: 200% 200%;
-      opacity: 0.2; 
+      opacity: 0.2;
       z-index: -1;
       animation: subtleMove 8s ease-in-out infinite;
     }
@@ -287,11 +298,14 @@
   <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
-      <!-- عکسی که خواستید جایگزین شود -->
-      <img
-        src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg"
-        alt="Security Icon"
-      />
+      <!-- ۱) بسته‌بندی عکس در این باکس -->
+      <div class="feature-img-wrapper">
+        <img
+          src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg"
+          alt="Security Icon"
+        />
+      </div>
+
       <div class="feature-content">
         <div class="pink-card">
           <div class="arrow">⤴</div>
@@ -316,7 +330,6 @@
 
   <!-- LINKS SECTION -->
   <section class="links-section" id="links-section">
-    <!-- عنوان مدرن‌تر -->
     <h2 class="section-title">Modern VPN Links</h2>
     <p class="section-subtitle">Click on any box to copy your link</p>
 
@@ -330,7 +343,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از sub.txt
+    // خواندن لینک‌ها از فایل sub.txt یا هر سورس دیگری
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
@@ -343,7 +356,6 @@
 
           const textSpan = document.createElement('span');
           textSpan.textContent = `UltraVPN #${index + 1}`;
-
           box.appendChild(textSpan);
 
           box.addEventListener('click', () => {
