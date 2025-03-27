@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Modern VPN Subscription - Inline-Flex Centered</title>
+  <title>Modern VPN Subscription</title>
 
   <!-- گوگل فونت -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -98,28 +98,28 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
-    /* ۱) ظرف مخصوص عکس برای تغییر سایز و بک‌گراند */
+    /* تصویر با پس‌زمینهٔ کاملاً مشکی + کادر ساده */
     .feature-img-wrapper {
-      flex: 1;                  /* یک ستون از flex بگیرد */
-      max-width: 40%;           /* عکس نهایتاً ۴۰٪ کل عرض container باشد */
-      display: flex;            /* برای تراز بهتر */
+      flex: 1;
+      max-width: 40%;         
+      display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #1a1a1a; /* رنگ نزدیک به محیط تاریک سایت یا #0a0a0a */
-      border-radius: 20px;      /* کادر گرد برای عکس */
-      margin: 1rem;             /* کمی فاصله اطراف عکس */
-      box-shadow: 
-        0 0 20px rgba(240, 5, 150, 0.1),      /* سایه بیرونی کم‌رنگ */
-        inset 0 0 20px rgba(240, 5, 150, 0.05); /* سایه داخلی (inner glow) */
-      position: relative;
+      background-color: #0a0a0a; /* همان رنگ پس‌زمینه سایت */
+      margin: 1rem;
+      border-radius: 20px;      
+      /* برای داشتن کادر ساده دور "ظرف" عکس، می‌توانید اینجا هم border بگذارید
+         اما معمولا دور خود عکس بهتر دیده می‌شود. */
     }
 
-    /* ۲) عکس درون ظرف */
     .feature-img-wrapper img {
       width: 100%;
       height: auto;
-      object-fit: contain;   /* یا cover به دلخواه شما */
-      border-radius: 16px;   /* هم‌راستا با ظرف */
+      object-fit: contain;
+      border-radius: 16px;
+      /* کادر ظریف و سایه بیرونی */
+      border: 1px solid #333;  
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7); 
     }
 
     .feature-content {
@@ -178,7 +178,6 @@
       color: #aaa;
       line-height: 1.4;
     }
-
     @media (max-width: 768px) {
       .feature-container {
         flex-direction: column;
@@ -201,7 +200,7 @@
       padding: 3rem 1rem 4rem;
       max-width: 1300px;
       margin: 0 auto;
-      text-align: center; /* برای تیتر و توضیحات */
+      text-align: center;
     }
     .section-title {
       font-size: 2.2rem;
@@ -215,7 +214,6 @@
       margin-bottom: 2rem;
     }
 
-    /* باکس‌های لینک‌ها (inline-flex + scroll افقی در صورت کمبود فضا) */
     .subscription-container {
       display: block;
       white-space: nowrap;
@@ -266,7 +264,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
     .subscription-box span {
-      font-weight: 400; /* متن معمولی */
+      font-weight: 400; 
       font-size: 0.9rem;
       line-height: 1.4;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
@@ -275,7 +273,6 @@
       text-align: center;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 1rem;
@@ -298,7 +295,7 @@
   <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
-      <!-- ۱) بسته‌بندی عکس در این باکس -->
+      <!-- عکس با بک‌گراند هماهنگ و کادر ساده -->
       <div class="feature-img-wrapper">
         <img
           src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg"
@@ -343,7 +340,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از فایل sub.txt یا هر سورس دیگری
+    // خواندن لینک‌ها از فایل sub.txt یا هر منبع دیگر
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
@@ -358,6 +355,7 @@
           textSpan.textContent = `UltraVPN #${index + 1}`;
           box.appendChild(textSpan);
 
+          // کپی لینک
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
