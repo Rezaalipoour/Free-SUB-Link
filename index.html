@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Modern VPN Subscription - Glass Cards</title>
+  <title>Modern VPN Subscription - Inline-Block Centered</title>
 
   <!-- گوگل فونت -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -20,21 +20,20 @@
       --accent2: #8e2de2;
       --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
-
-      /* گرادیان باکس‌ها: می‌توانید رنگ‌ها را به سلیقه خود تغییر دهید */
+      /* رنگ‌های گرادیان باکس به دلخواه تغییر دهید */
       --box-gradient1: #8e2de2;
       --box-gradient2: #4a00e0;
     }
 
     * {
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
 
     body {
-      background-color: var(--bg-color); 
+      background-color: var(--bg-color);
       color: var(--text-color);
       overflow-x: hidden;
     }
@@ -183,7 +182,7 @@
       padding: 3rem 1rem 4rem;
       max-width: 1300px;
       margin: 0 auto;
-      text-align: center;
+      text-align: center; /* برای تیتر و زیرتیتر */
     }
     .section-title {
       font-size: 2.2rem;
@@ -198,47 +197,41 @@
     }
 
     /*
-      همهٔ باکس‌ها در یک خط
-      اسکرول افقی در صورت زیاد بودن باکس‌ها
-      بدون پدینگ و مارجین تا از چپ چسبیده شروع شوند
+      الگوی Inline-Block + White-Space nowrap برای قرارگیری در یک خط
+      text-align: center برای مرکزچین شدن باکس‌ها در صورت کافی بودن عرض
     */
     .subscription-container {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 16px;
-      margin: 0;       /* حذف margin */
-      padding: 0;      /* حذف padding */
-      justify-content: flex-start;
-      align-items: center;
-      /* دلخواه: می‌توانید حداکثر عرض بگذارید */
-      max-width: 100vw;
+      display: block;          /* مهم: روی block تنظیم شود */
+      white-space: nowrap;     /* باکس‌ها در یک خط باقی بمانند */
+      overflow-x: auto;        /* اسکرول افقی در صورت کمبود فضا */
+      margin: 0 auto;          /* اگر خواستید خود کانتینر وسط باشد */
+      padding: 0;              /* بدون پدینگ اضافه */
+      text-align: center;      /* مرکزچین شدن inline-block ها */
     }
 
-    /* ====== SUBSCRIPTION BOX (Glass + New Gradient) ====== */
     .subscription-box {
-      position: relative;
+      display: inline-block;   /* برای قرارگیری در یک خط */
+      vertical-align: middle;  /* وسط‌چین عمودی در کنار هم */
       width: 120px;
-      min-width: 120px;
       height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
+      margin: 0 8px;          /* فاصله افقی بین باکس‌ها */
       cursor: pointer;
       border-radius: 14px;
       overflow: hidden;
+      color: #fff;
+      text-align: center;
       background:
         /* لایه شفاف رویی */
         linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        /* گرادینت */
+        /* گرادینت باکس */
         linear-gradient(135deg, var(--box-gradient1), var(--box-gradient2)) border-box;
       border: 2px solid transparent;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       backdrop-filter: blur(6px);
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
+
     .subscription-box::before {
       content: "";
       position: absolute;
@@ -258,13 +251,18 @@
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
+
     .subscription-box span {
       /* متن معمولی، نه بولد */
-      font-weight: 400; 
+      font-weight: 400;
       font-size: 0.9rem;
       line-height: 1.4;
-      z-index: 1;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: inline-block; /* برای مرکزچین بهتر داخل باکس */
+      margin: 0 5px;
+      position: relative;
+      z-index: 1;
+      max-width: 100%;
     }
 
     /* FOOTER */
@@ -331,7 +329,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از sub.txt
+    // خواندن لینک‌ها از sub.txt (یا داده‌های مشابه)
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
@@ -342,13 +340,12 @@
           const box = document.createElement('div');
           box.className = 'subscription-box';
 
-          // نام یا شماره سرور
+          // متن درون باکس (مثلاً شماره سرور)
           const textSpan = document.createElement('span');
           textSpan.textContent = `UltraVPN #${index + 1}`;
-
           box.appendChild(textSpan);
 
-          // هنگام کلیک، لینک واقعی را کپی کند
+          // رویداد کلیک برای کپی‌کردن لینک
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
