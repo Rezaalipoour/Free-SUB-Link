@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <title>Modern VPN Subscription</title>
-  <!-- Google Font (e.g., Inter for a modern look) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- فونت مدرن (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
     rel="stylesheet"
@@ -15,72 +15,166 @@
       margin: 0; padding: 0; box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
-
     body {
-      background-color: #0c0c0c;
+      background-color: #0a0a0a;
       color: #fff;
       overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
     }
 
     /* =======================
        1) HERO SECTION
     ======================== */
     .hero {
-      position: relative;
-      height: 70vh; /* Height of the hero area */
+      height: 80vh; /* ارتفاع سکشن اول */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      z-index: 1; /* For stacking context */
+      background: linear-gradient(135deg, #0a0a0a, #5B0EBD);
+      /* گرادینت مشکی تا بنفش */
+      position: relative;
       overflow: hidden;
     }
-    /* پس‌زمینه‌ی سه‌بعدی آبستره (در اینجا از یک تصویر نمونه استفاده می‌کنیم) */
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url("https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress") center/cover no-repeat;
-      /* می‌توانید URL بالا را با تصویر 3D abstract دلخواه عوض کنید */
-      filter: blur(2px); /* کمی بلور برای افکت عمق */
-      z-index: -1;
-      transform: scale(1.1);
-    }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      line-height: 1.2;
     }
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
       opacity: 0.9;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      color: #ccc;
     }
     .cta-btn {
-      display: inline-block;
       padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: #f00596; /* رنگ دلخواه برای CTA */
+      border: none;
       border-radius: 50px;
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
       font-weight: 600;
-      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .cta-btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 20px rgba(240, 5, 150, 0.4);
     }
 
     /* =======================
-       2) LINKS SECTION
+       2) FEATURE SECTION
+    ======================== */
+    .feature-section {
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem;
+    }
+    .feature-container {
+      /* جعبه‌ی مشکی که تصویر و کارت صورتی داخلش هستند */
+      background: #000000;
+      border-radius: 24px;
+      width: 90%;
+      max-width: 1100px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    /* تصویر در سمت راست */
+    .feature-container img {
+      flex: 1;
+      object-fit: cover;
+      width: 50%;
+      height: 100%;
+    }
+    /* محتوا در سمت چپ */
+    .feature-content {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    /* کارت صورتی روی محتوای سمت چپ */
+    .pink-card {
+      background: linear-gradient(135deg, #f00596, #8e2de2);
+      padding: 1.5rem;
+      border-radius: 16px;
+      color: #fff;
+      max-width: 300px;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(240, 5, 150, 0.3);
+    }
+    .pink-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .pink-card p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+    /* فلش در کارت صورتی */
+    .pink-card .arrow {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    /* آمار و ارقام (همان 47% و 4810) */
+    .feature-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .stat-item h4 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+      color: #f00596;
+    }
+    .stat-item p {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+
+    /* واکنشگرایی بخش فیچر برای موبایل: تصویر پایین بیاید */
+    @media (max-width: 768px) {
+      .feature-container {
+        flex-direction: column;
+      }
+      .feature-container img {
+        width: 100%;
+        height: 200px;
+      }
+      .feature-content {
+        width: 100%;
+        align-items: center;
+      }
+    }
+
+    /* =======================
+       3) LINKS SECTION
     ======================== */
     .links-section {
-      padding: 3rem 1rem;
+      padding: 3rem 1rem 4rem;
       max-width: 1300px;
       margin: 0 auto;
     }
@@ -88,7 +182,7 @@
       text-align: center;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     .section-subtitle {
       text-align: center;
@@ -97,22 +191,17 @@
       margin-bottom: 2rem;
     }
 
-    /* ساخت گرید از مربع‌ها */
     .subscription-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 30px;
       padding: 0 1rem;
-      justify-items: center; /* مربع‌ها وسط‌چین شوند */
+      justify-items: center;
     }
-
-    /* =======================
-       3) THE SQUARE BOX
-    ======================== */
     .subscription-box {
       position: relative;
-      width: 200px;  /* مربع */
-      height: 200px; /* مربع */
+      width: 200px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -120,8 +209,7 @@
       color: #fff;
       cursor: pointer;
       border-radius: 12px;
-      overflow: hidden;  /* برای کنترل پس‌زمینه‌ی متحرک */
-      /* جلوه‌ی شیشه‌ای */
+      overflow: hidden;
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255,255,255,0.2);
@@ -132,7 +220,6 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 18px rgba(0,0,0,0.4);
     }
-
     /* گرادینت مشکی-بنفش متحرک در پس‌زمینه‌ی هر مربع */
     .subscription-box::before {
       content: "";
@@ -142,21 +229,18 @@
       background: linear-gradient(45deg, #000000, #5B0EBD);
       background-size: 200% 200%;
       animation: boxGradient 5s ease-in-out infinite;
-      opacity: 0.6; /* شفافیت گرادینت */
+      opacity: 0.6;
     }
-
     @keyframes boxGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    /* متن لینک درون مربع */
     .subscription-box span {
       padding: 0 10px;
       font-size: 0.8rem;
       line-height: 1.4;
-      word-wrap: break-word;  /* شکستن لینک‌های بلند */
+      word-wrap: break-word;
     }
 
     /* =======================
@@ -166,27 +250,62 @@
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #666;
     }
 
   </style>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
+  <!-- 1) HERO SECTION -->
   <section class="hero">
     <h1>ProCreative VPN</h1>
-    <p>The Best Subscription for Your Privacy</p>
-    <a href="#links-section" class="cta-btn">Show Me the Links</a>
+    <p>Secure, Modern, and Free</p>
+    <a href="#feature" class="cta-btn">Discover More</a>
   </section>
 
-  <!-- LINKS SECTION -->
+  <!-- 2) FEATURE SECTION -->
+  <section class="feature-section" id="feature">
+    <div class="feature-container">
+      <!-- تصویر در سمت راست -->
+      <img
+        src="https://images.pexels.com/photos/4450412/pexels-photo-4450412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        alt="Building"
+      />
+      <!-- محتوا در سمت چپ -->
+      <div class="feature-content">
+        <!-- کارت صورتی روی بخش سمت چپ -->
+        <div class="pink-card">
+          <div class="arrow">⤴</div>
+          <h3>From Vision to Structure</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas porttitor congue massa.
+          </p>
+        </div>
+
+        <!-- آمارها -->
+        <div class="feature-stats">
+          <div class="stat-item">
+            <h4>47%</h4>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div class="stat-item">
+            <h4>4810</h4>
+            <p>Consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) LINKS SECTION -->
   <section class="links-section" id="links-section">
     <h2 class="section-title">Subscription Links</h2>
     <p class="section-subtitle">Click any square to copy its link</p>
 
     <div class="subscription-container" id="links">
-      <!-- Boxes will be dynamically added here by JS -->
+      <!-- Boxes will be added by JS -->
     </div>
   </section>
 
@@ -195,25 +314,21 @@
   </footer>
 
   <script>
-    // 1) Read sub.txt
+    // خواندن لینک‌ها از sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
-        // 2) Split into lines
         const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
         const container = document.getElementById('links');
 
-        // 3) For each line, create a square box
         lines.forEach(line => {
           const box = document.createElement('div');
           box.className = 'subscription-box';
 
-          // Insert the text in a <span>
           const textSpan = document.createElement('span');
           textSpan.textContent = line;
           box.appendChild(textSpan);
 
-          // On click: copy the link
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
