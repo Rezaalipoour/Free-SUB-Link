@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Modern Subscription Links</title>
-  <!-- فونت مدرن از گوگل -->
+  <title>Modern VPN Subscription</title>
+  <!-- Google Font (e.g., Inter for a modern look) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
@@ -12,190 +12,219 @@
   />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
 
-    /* تمام صفحه */
     body {
-      background: #f3f4f6;
-      color: #333;
+      background-color: #0c0c0c;
+      color: #fff;
       overflow-x: hidden;
     }
 
-    /* هروی سکشن بزرگ بالای صفحه */
+    /* =======================
+       1) HERO SECTION
+    ======================== */
     .hero {
       position: relative;
-      height: 70vh;
+      height: 70vh; /* Height of the hero area */
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
+      z-index: 1; /* For stacking context */
       overflow: hidden;
-      color: #fff;
     }
-
-    /* گرادینت متحرک پس‌زمینه */
+    /* پس‌زمینه‌ی سه‌بعدی آبستره (در اینجا از یک تصویر نمونه استفاده می‌کنیم) */
     .hero::before {
       content: "";
       position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, #6159e6, #7a80f8, #6d36de);
-      background-size: 200% 200%;
-      animation: gradientMove 8s ease infinite;
+      inset: 0;
+      background: url("https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress") center/cover no-repeat;
+      /* می‌توانید URL بالا را با تصویر 3D abstract دلخواه عوض کنید */
+      filter: blur(2px); /* کمی بلور برای افکت عمق */
       z-index: -1;
+      transform: scale(1.1);
     }
-
-    @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    /* متن اصلی هروی */
     .hero h1 {
       font-size: 3rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      letter-spacing: 1px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
     .hero p {
       font-size: 1.2rem;
-      opacity: 0.9;
       margin-bottom: 2rem;
+      opacity: 0.9;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
     }
-
-    /* دکمه CTA */
-    .hero .cta-btn {
-      background: #ffffff;
-      color: #6159e6;
+    .cta-btn {
+      display: inline-block;
       padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 50px;
-      text-decoration: none;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
       font-weight: 600;
+      text-decoration: none;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .hero .cta-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
-    /* سکشن برای نمایش باکس‌های لینک‌ها */
+    /* =======================
+       2) LINKS SECTION
+    ======================== */
     .links-section {
-      position: relative;
-      z-index: 1;
-      padding: 3rem 1rem 4rem;
+      padding: 3rem 1rem;
       max-width: 1300px;
       margin: 0 auto;
     }
-
     .section-title {
       text-align: center;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .section-subtitle {
       text-align: center;
       font-size: 1rem;
-      color: #666;
+      color: #aaa;
       margin-bottom: 2rem;
     }
 
-    /* گرید برای چیدمان باکس‌ها */
+    /* ساخت گرید از مربع‌ها */
     .subscription-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 30px;
       padding: 0 1rem;
+      justify-items: center; /* مربع‌ها وسط‌چین شوند */
     }
 
-    /* باکس‌های لینک با افکت گلس‌مورفیسم/شیشه‌ای کم‌رنگ */
+    /* =======================
+       3) THE SQUARE BOX
+    ======================== */
     .subscription-box {
       position: relative;
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      padding: 20px;
+      width: 200px;  /* مربع */
+      height: 200px; /* مربع */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      color: #333;
+      border-radius: 12px;
+      overflow: hidden;  /* برای کنترل پس‌زمینه‌ی متحرک */
+      /* جلوه‌ی شیشه‌ای */
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .subscription-box:hover {
       transform: translateY(-4px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
     }
 
-    /* فوتر ساده */
+    /* گرادینت مشکی-بنفش متحرک در پس‌زمینه‌ی هر مربع */
+    .subscription-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(45deg, #000000, #5B0EBD);
+      background-size: 200% 200%;
+      animation: boxGradient 5s ease-in-out infinite;
+      opacity: 0.6; /* شفافیت گرادینت */
+    }
+
+    @keyframes boxGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* متن لینک درون مربع */
+    .subscription-box span {
+      padding: 0 10px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      word-wrap: break-word;  /* شکستن لینک‌های بلند */
+    }
+
+    /* =======================
+       4) FOOTER
+    ======================== */
     footer {
       text-align: center;
-      color: #777;
-      margin-bottom: 1rem;
+      padding: 1rem;
       font-size: 0.9rem;
+      color: #777;
     }
 
   </style>
 </head>
 <body>
-  <!-- بخش هروی -->
+
+  <!-- HERO SECTION -->
   <section class="hero">
-    <h1>Awesome VPN Links</h1>
-    <p>سرویس رایگان و امن برای شما</p>
-    <a href="#links-section" class="cta-btn">بریم ببینیم!</a>
+    <h1>ProCreative VPN</h1>
+    <p>The Best Subscription for Your Privacy</p>
+    <a href="#links-section" class="cta-btn">Show Me the Links</a>
   </section>
 
-  <!-- سکشن نمایش لینک‌ها -->
+  <!-- LINKS SECTION -->
   <section class="links-section" id="links-section">
     <h2 class="section-title">Subscription Links</h2>
-    <p class="section-subtitle">روی هر باکس کلیک کنید تا لینک آن کپی شود</p>
+    <p class="section-subtitle">Click any square to copy its link</p>
 
-    <div class="subscription-container" id="links"></div>
+    <div class="subscription-container" id="links">
+      <!-- Boxes will be dynamically added here by JS -->
+    </div>
   </section>
 
   <footer>
-    © 2025 YourName — All Rights Reserved
+    © 2025 YourName — All rights reserved.
   </footer>
 
   <script>
-    // فایل sub.txt را می‌خوانیم تا لینک‌ها را بارگذاری کنیم
+    // 1) Read sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
-        // متن دریافتی را خط به خط جدا می‌کنیم
+        // 2) Split into lines
         const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
         const container = document.getElementById('links');
 
+        // 3) For each line, create a square box
         lines.forEach(line => {
           const box = document.createElement('div');
           box.className = 'subscription-box';
-          box.textContent = line;
 
+          // Insert the text in a <span>
+          const textSpan = document.createElement('span');
+          textSpan.textContent = line;
+          box.appendChild(textSpan);
+
+          // On click: copy the link
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
-              .then(() => alert('لینک کپی شد!'))
-              .catch(err => console.error('خطا در کپی لینک:', err));
+              .then(() => alert('Link copied to clipboard!'))
+              .catch(err => console.error('Failed to copy link:', err));
           });
 
           container.appendChild(box);
         });
       })
       .catch(error => {
-        console.error('خطا در دریافت sub.txt:', error);
+        console.error('Error fetching sub.txt:', error);
       });
   </script>
 </body>
