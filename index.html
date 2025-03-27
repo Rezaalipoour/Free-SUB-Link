@@ -16,13 +16,163 @@
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
+
     body {
+      /* رنگ پس‌زمینه‌ای کمی تیره که در گرادیان هدر هم وجود دارد */
       background-color: #0a0a0a; 
       color: #fff;
       overflow-x: hidden;
     }
-    
-    /* بخش اصلی (می‌تواند همان سکشن قبلی باشد) */
+    a {
+      text-decoration: none;
+    }
+
+    /* ====== 1) HERO SECTION ====== */
+    .hero {
+      /* گرادیان پس‌زمینه تیره به بنفش برای هدر */
+      background: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 0 1rem;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      /* کمی افکت نور برای تیتر */
+      text-shadow: 0 4px 20px rgba(91,14,189,0.6);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      color: #ccc;
+    }
+    .cta-btn {
+      padding: 1rem 2rem;
+      /* رنگ اصلی اکشن: گرادیان صورتی-بنفش */
+      background: linear-gradient(135deg, #f00596, #8e2de2);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(240,5,150,0.3);
+    }
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(240,5,150,0.4);
+    }
+
+    /* ====== 2) FEATURE SECTION ====== */
+    .feature-section {
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem;
+    }
+    .feature-container {
+      /* با رنگ نزدیک به پس‌زمینه و اندکی تیره‌تر برای جدا شدن بخش */
+      background: #0a0a0a;
+      border-radius: 24px;
+      width: 90%;
+      max-width: 1100px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .feature-container img {
+      flex: 1;
+      object-fit: cover;
+      width: 50%;
+      height: 100%;
+    }
+    .feature-content {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    /* کارت گرادیانی برای برجسته کردن یک نکته مهم */
+    .pink-card {
+      background: linear-gradient(135deg, #f00596, #5B0EBD);
+      padding: 1.5rem;
+      border-radius: 16px;
+      color: #fff;
+      max-width: 320px;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(240,5,150,0.3);
+    }
+    .pink-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .pink-card p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+    .pink-card .arrow {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+    .feature-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap; /* اگر فضای کم باشد، المان‌ها به خط بعد بروند */
+    }
+    .stat-item {
+      text-align: left;
+      min-width: 100px;
+    }
+    .stat-item h4 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+      /* تاکید بر رنگ صورتی */
+      color: #f00596;
+      text-shadow: 0 2px 10px rgba(240,5,150,0.5);
+    }
+    .stat-item p {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .feature-container {
+        flex-direction: column;
+      }
+      .feature-container img {
+        width: 100%;
+        height: 200px;
+      }
+      .feature-content {
+        width: 100%;
+        align-items: center;
+      }
+      .stat-item {
+        text-align: center;
+      }
+    }
+
+    /* ====== 3) LINKS SECTION ====== */
     .links-section {
       padding: 3rem 1rem 4rem;
       max-width: 1300px;
@@ -41,90 +191,147 @@
       margin-bottom: 2rem;
     }
 
-    /* چیدمان گرید برای باکس‌های اشتراک */
+    /* گرید نمایش باکس‌ها */
     .subscription-container {
       display: grid;
-      /* می‌توانی مقادیر زیر را بنا به دلخواه تغییر دهی */
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 30px;
       padding: 0 1rem;
       justify-items: center;
     }
 
-    /* ======= ظاهر کارت‌ها با گرادینت هماهنگ و عنوان + لینک ======= */
+    /* ======= GLASS + GRADIENT BORDER BOX ======= */
     .subscription-box {
       position: relative;
-      width: 100%;
-      max-width: 300px;
-      padding: 1.5rem 1rem;
-      border-radius: 16px;
+      width: 220px;
+      height: 220px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       color: #fff;
       cursor: pointer;
+      border-radius: 20px; 
       overflow: hidden;
-      /* گرادینت پس‌زمینه */
-      background: linear-gradient(135deg, #5B0EBD, #f00596);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      /* حاشیه گرادیانی شفاف + شیشه‌ای */
+      background: 
+        linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.05)) padding-box,
+        linear-gradient(135deg, #5B0EBD, #f00596) border-box;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
+    /* انیمیشن ملایم پس‌زمینه داخلی */
+    .subscription-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, #000000, #5B0EBD);
+      background-size: 200% 200%;
+      opacity: 0.3;
+      z-index: -1;
+      animation: subtleMove 8s ease-in-out infinite;
+    }
+    @keyframes subtleMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .subscription-box:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
 
-    /* عنوان باکس */
-    .subscription-box h3 {
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    .subscription-box span {
+      padding: 0 10px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+      z-index: 1;
     }
 
-    /* لینک داخل باکس */
-    .subscription-box p.link-text {
-      font-size: 0.9rem;
-      line-height: 1.4;
-      word-wrap: break-word; 
-      word-break: break-all; 
-      margin: 0 auto;
-      max-width: 90%;
-      color: #f1f1f1;
-      /* برای جلوگیری از طولانی‌شدن بهتر است سایز را کوچک‌تر کنیم */
+    /* ====== 4) FOOTER ====== */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <section class="links-section">
-    <h2 class="section-title">Subscription Links</h2>
-    <p class="section-subtitle">Click any card to copy its link</p>
-    <div class="subscription-container" id="links"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>ProCreative VPN</h1>
+    <p>Secure, Modern, and Free</p>
+    <button class="cta-btn" onclick="document.getElementById('feature').scrollIntoView({ behavior: 'smooth' });">
+      Discover More
+    </button>
   </section>
 
+  <!-- FEATURE SECTION -->
+  <section class="feature-section" id="feature">
+    <div class="feature-container">
+      <!-- بهتره عکس مرتبط با امنیت یا VPN جایگزین بشه -->
+      <img
+        src="https://images.pexels.com/photos/4450412/pexels-photo-4450412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        alt="Security"
+      />
+      <div class="feature-content">
+        <div class="pink-card">
+          <div class="arrow">⤴</div>
+          <h3>High-Level Security</h3>
+          <p>
+            Protect your data and privacy with next-gen encryption and ultra-fast servers.
+          </p>
+        </div>
+        <div class="feature-stats">
+          <div class="stat-item">
+            <h4>47%</h4>
+            <p>Faster browsing speeds.</p>
+          </div>
+          <div class="stat-item">
+            <h4>4810</h4>
+            <p>Servers across the globe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKS SECTION -->
+  <section class="links-section" id="links-section">
+    <h2 class="section-title">Subscription Links</h2>
+    <p class="section-subtitle">Click any square to copy its link</p>
+
+    <div class="subscription-container" id="links">
+      <!-- Boxes appended by JavaScript -->
+    </div>
+  </section>
+
+  <footer>
+    © 2025 YourName — All rights reserved.
+  </footer>
+
   <script>
-    // خواندن لینک‌ها از sub.txt (یا هر منبع دیگر)
+    // خواندن لینک‌ها از sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
         const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
         const container = document.getElementById('links');
 
-        lines.forEach((line, index) => {
+        lines.forEach(line => {
           const box = document.createElement('div');
           box.className = 'subscription-box';
 
-          // عنوان هر باکس (میتونی از دیتای خودت چیزی بذاری)
-          const heading = document.createElement('h3');
-          heading.textContent = `Link #${index + 1}`;
-          box.appendChild(heading);
-
-          // متن لینک
-          const textSpan = document.createElement('p');
-          textSpan.className = 'link-text';
+          const textSpan = document.createElement('span');
           textSpan.textContent = line;
           box.appendChild(textSpan);
 
-          // کپی به کلیپ‌بورد
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
