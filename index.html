@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>لینک‌های اشتراک</title>
+</head>
+<body style="font-family: Tahoma; direction: rtl; padding: 20px;">
+  <h2>🔗 لینک‌های اشتراک</h2>
+  <pre id="subs" style="background:#f4f4f4; padding:15px; border-radius:10px;"></pre>
+
+  <script>
+    fetch('sub.txt')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('subs').textContent = data;
+      })
+      .catch(error => {
+        document.getElementById('subs').textContent = "خطا در بارگذاری اشتراک‌ها!";
+      });
+  </script>
+</body>
+</html>
