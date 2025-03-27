@@ -28,13 +28,14 @@
       font-family: 'Inter', sans-serif;
     }
 
+    /* بدنهٔ کلی */
     body {
-      background-color: #0a0a0a;
+      background-color: #0a0a0a; /* پس‌زمینهٔ عمومی */
       color: var(--text-color);
       overflow-x: hidden;
     }
 
-    /* ====== HERO (هدر با گرادیان) ====== */
+    /* ====== HERO (هدر) با گرادیان ====== */
     .hero {
       background: var(--gradient-hero);
       min-height: 80vh;
@@ -76,16 +77,16 @@
 
     /* ====== FEATURE SECTION ====== */
     .feature-section {
-      background: #000;  /* پس‌زمینهٔ سکشن */
+      background: #0a0a0a; /* رنگ پس‌زمینهٔ سکشن */
       display: flex;
       justify-content: center;
       padding: 3rem 1rem;
     }
-    /* مستطیل متمایز با رنگ تیره‌تر، بوردر و سایه */
+    /* باکس فیچر؛ داخلش مشکی مطلق (#000) ولی با بُردر و سایه */
     .feature-container {
-      background: #111;         /* کمی روشن‌تر از #000 تا مشخص باشد */
-      border: 2px solid #333;  /* حاشیهٔ خاکستری تیره */
-      border-radius: 16px;     /* گوشه‌های مستطیل */
+      background: #000;          /* داخل باکس کاملاً سیاه */
+      border: 2px solid #333;   /* حاشیه خاکستری برای تمایز */
+      border-radius: 16px;      /* گوشه‌های کادر */
       width: 90%;
       max-width: 1100px;
       min-height: 300px;
@@ -94,10 +95,11 @@
       align-items: center;
       overflow: hidden;
       position: relative;
-      /* سایه برای جدا شدن از پس‌زمینه */
+      /* سایه بیرونی برای برجسته‌تر شدن باکس */
       box-shadow: 0 4px 30px rgba(0,0,0,0.7);
-      margin: 2rem auto; /* فاصله عمودی و مرکزچین */
+      margin: 2rem auto;
     }
+
     /* بزرگ‌تر کردن آبجکت سه‌بعدی */
     .feature-img-wrapper {
       flex: 1;
@@ -105,7 +107,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #111;
+      background-color: #000; /* داخل بخش عکس هم مشکی مطلق */
       border-radius: 16px;
       margin: 1rem;
     }
@@ -192,7 +194,7 @@
 
     /* ====== LINKS SECTION ====== */
     .links-section {
-      background: #000;
+      background: #0a0a0a;
       width: 100%;
       padding: 3rem 1rem 4rem;
       margin: 0 auto;
@@ -214,9 +216,10 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
-      background: #111;
-      border: 2px solid #333;
+      background: #000;         /* مشکی داخلی */
+      border: 2px solid #333;   /* تمایز با اطراف */
       border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6); /* سایه برای برجستگی */
       padding: 2rem;
       margin: 0 auto;
     }
@@ -309,6 +312,7 @@
   </footer>
 
   <script>
+    // بارگذاری لینک‌ها از فایل sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
