@@ -1,59 +1,93 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>لینک‌های اشتراک</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscription Links</title>
   <style>
     body {
-      direction: rtl;
-      font-family: sans-serif;
-      background-color: #f9f9f9;
-      padding: 2rem;
-      color: #333;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1DA1F2, #0d8ddb);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
     }
+
     h1 {
-      text-align: center;
-      color: #222;
+      font-size: 2.5em;
+      margin-bottom: 0;
     }
-    a {
-      display: block;
-      background: #fff;
+
+    p.subtitle {
+      font-size: 1em;
+      color: #dce3ea;
+      margin-bottom: 30px;
+    }
+
+    .link-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 15px 20px;
+      border-radius: 10px;
       margin: 10px 0;
-      padding: 10px;
-      text-decoration: none;
-      color: #1a0dab;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      transition: background 0.2s;
-      direction: ltr;
+      width: 100%;
+      max-width: 800px;
       word-break: break-all;
+      position: relative;
+      transition: background 0.3s;
     }
-    a:hover {
-      background-color: #e6f0ff;
+
+    .link-box:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffffff33;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    .copy-btn:hover {
+      background: #ffffff55;
     }
   </style>
 </head>
 <body>
-  <h1>لینک‌های اشتراک</h1>
-  <div id="links">در حال بارگذاری...</div>
+  <h1>Subscription Links</h1>
+  <p class="subtitle">Click any box to copy the subscription link.</p>
 
   <script>
-    fetch("sub.txt")
-      .then(res => res.text())
-      .then(data => {
-        const links = data.split(/[\r\n]+/).filter(line => line.trim() !== "");
-        const container = document.getElementById("links");
-        container.innerHTML = "";
-        links.forEach(link => {
-          const a = document.createElement("a");
-          a.href = link;
-          a.textContent = link;
-          container.appendChild(a);
+    fetch('sub.txt')
+      .then(response => response.text())
+      .then(text => {
+        const lines = text.split('\n').filter(line => line.trim() !== '');
+        lines.forEach(line => {
+          const box = document.createElement('div');
+          box.className = 'link-box';
+          box.textContent = line;
+
+          const btn = document.createElement('button');
+          btn.textContent = 'Copy';
+          btn.className = 'copy-btn';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(line);
+            btn.textContent = 'Copied!';
+            setTimeout(() => (btn.textContent = 'Copy'), 1500);
+          };
+
+          box.appendChild(btn);
+          document.body.appendChild(box);
         });
-      })
-      .catch(err => {
-        document.getElementById("links").innerText = "خطا در بارگذاری لینک‌ها!";
-        console.error(err);
       });
   </script>
 </body>
