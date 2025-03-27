@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <title>Modern VPN Subscription</title>
 
-  <!-- گوگل فونت -->
+  <!-- فونت گوگل -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
@@ -13,33 +13,27 @@
   />
 
   <style>
-    :root {
-      --bg-color: #0a0a0a;
-      --text-color: #fff;
-      --accent1: #f00596;
-      --accent2: #8e2de2;
-      --accent3: #5B0EBD;
-      --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
-      --box-gradient1: #8e2de2;
-      --box-gradient2: #4a00e0;
-    }
-
     * {
-      margin: 0;
-      padding: 0;
+      margin: 0; 
+      padding: 0; 
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
 
+    /* رنگ پس‌زمینه یکسان برای کل صفحه */
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background-color: #000;  /* یا #0a0a0a */
+      color: #fff;
       overflow-x: hidden;
     }
 
-    /* ====== HERO SECTION ====== */
+    /* سکشن‌های مختلف همگی پس‌زمینه شفاف یا همان رنگ اصلی بدن (body) می‌گیرند */
+    section {
+      background: transparent; 
+    }
+
+    /* اگر نمی‌خواهید هیچ گرادیانی در هدر باشد */
     .hero {
-      background: var(--gradient-hero);
       min-height: 80vh;
       display: flex;
       flex-direction: column;
@@ -48,13 +42,14 @@
       text-align: center;
       position: relative;
       padding: 0 1rem;
+      /* پس‌زمینه را حذف یا تنظیم یک رنگ کنید */
+      background: transparent;
     }
     .hero h1 {
       font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
-      text-shadow: 0 4px 20px rgba(91,14,189,0.6);
     }
     .hero p {
       font-size: 1.2rem;
@@ -64,7 +59,7 @@
     }
     .cta-btn {
       padding: 1rem 2rem;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      background: linear-gradient(135deg, #f00596, #8e2de2);
       border: none;
       border-radius: 50px;
       font-weight: 600;
@@ -78,15 +73,17 @@
       box-shadow: 0 8px 20px rgba(240,5,150,0.4);
     }
 
-    /* ====== FEATURE SECTION ====== */
+    /* بخش فیچر */
     .feature-section {
       display: flex;
       justify-content: center;
       padding: 3rem 1rem;
     }
     .feature-container {
-      background: #0a0a0a;
-      border-radius: 24px;
+      /* هم‌رنگ پس‌زمینه اصلی باشد */
+      background: transparent;
+      /* یا اگر دوست دارید کمی حاشیه بصری داشته باشید، color ثابت بگذارید */
+      border-radius: 0;
       width: 90%;
       max-width: 1100px;
       min-height: 300px;
@@ -95,31 +92,26 @@
       align-items: center;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      /* حذف box-shadow تا کادر خاکستری دورش نباشد */
+      box-shadow: none;
     }
 
-    /* تصویر با پس‌زمینهٔ کاملاً مشکی + کادر ساده */
     .feature-img-wrapper {
       flex: 1;
-      max-width: 40%;         
+      max-width: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #0a0a0a; /* همان رنگ پس‌زمینه سایت */
+      background: transparent;
       margin: 1rem;
-      border-radius: 20px;      
-      /* برای داشتن کادر ساده دور "ظرف" عکس، می‌توانید اینجا هم border بگذارید
-         اما معمولا دور خود عکس بهتر دیده می‌شود. */
     }
-
     .feature-img-wrapper img {
       width: 100%;
       height: auto;
       object-fit: contain;
-      border-radius: 16px;
-      /* کادر ظریف و سایه بیرونی */
-      border: 1px solid #333;  
-      box-shadow: 0 4px 10px rgba(0,0,0,0.7); 
+      /* حذف border یا shadow اگر نخواسته باشید */
+      border: none;
+      box-shadow: none; 
     }
 
     .feature-content {
@@ -131,7 +123,7 @@
       gap: 1.5rem;
     }
     .pink-card {
-      background: linear-gradient(135deg, var(--accent1), var(--accent3));
+      background: linear-gradient(135deg, #f00596, #5B0EBD);
       padding: 1.5rem;
       border-radius: 16px;
       color: #fff;
@@ -149,7 +141,7 @@
       line-height: 1.4;
       opacity: 0.9;
     }
-    .pink-card .arrow {
+    .arrow {
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -162,26 +154,21 @@
       margin-top: 1rem;
       flex-wrap: wrap;
     }
-    .stat-item {
-      text-align: left;
-      min-width: 100px;
-    }
     .stat-item h4 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 0.2rem;
-      color: var(--accent1);
-      text-shadow: 0 2px 10px rgba(240,5,150,0.5);
+      color: #f00596;
     }
     .stat-item p {
       font-size: 0.9rem;
       color: #aaa;
       line-height: 1.4;
     }
+
     @media (max-width: 768px) {
       .feature-container {
         flex-direction: column;
-        min-height: auto;
       }
       .feature-img-wrapper {
         max-width: 80%;
@@ -195,18 +182,18 @@
       }
     }
 
-    /* ====== LINKS SECTION ====== */
+    /* LINKS SECTION */
     .links-section {
       padding: 3rem 1rem 4rem;
       max-width: 1300px;
       margin: 0 auto;
       text-align: center;
+      background: transparent;
     }
     .section-title {
       font-size: 2.2rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      text-shadow: 0 4px 20px rgba(91,14,189,0.3);
     }
     .section-subtitle {
       font-size: 1rem;
@@ -214,6 +201,7 @@
       margin-bottom: 2rem;
     }
 
+    /* باکس‌های لینک‌ها: یک خط با اسکرول افقی */
     .subscription-container {
       display: block;
       white-space: nowrap;
@@ -236,28 +224,13 @@
       color: #fff;
       background:
         linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        linear-gradient(135deg, var(--box-gradient1), var(--box-gradient2)) border-box;
+        linear-gradient(135deg, #8e2de2, #4a00e0) border-box;
       border: 2px solid transparent;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       backdrop-filter: blur(6px);
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
       text-align: center;
-    }
-    .subscription-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, #111, #330a4e);
-      background-size: 200% 200%;
-      opacity: 0.2;
-      z-index: -1;
-      animation: subtleMove 8s ease-in-out infinite;
-    }
-    @keyframes subtleMove {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
     .subscription-box:hover {
       transform: translateY(-5px);
@@ -267,7 +240,6 @@
       font-weight: 400; 
       font-size: 0.9rem;
       line-height: 1.4;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
       z-index: 1;
       max-width: 100%;
       text-align: center;
@@ -278,11 +250,11 @@
       padding: 1rem;
       font-size: 0.85rem;
       color: #666;
+      background: transparent;
     }
   </style>
 </head>
 <body>
-
   <!-- HERO -->
   <section class="hero">
     <h1>ProCreative VPN</h1>
@@ -295,21 +267,17 @@
   <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
-      <!-- عکس با بک‌گراند هماهنگ و کادر ساده -->
       <div class="feature-img-wrapper">
         <img
           src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg"
           alt="Security Icon"
         />
       </div>
-
       <div class="feature-content">
         <div class="pink-card">
           <div class="arrow">⤴</div>
           <h3>High-Level Security</h3>
-          <p>
-            Protect your data and privacy with next-gen encryption and ultra-fast servers.
-          </p>
+          <p>Protect your data and privacy with next-gen encryption and ultra-fast servers.</p>
         </div>
         <div class="feature-stats">
           <div class="stat-item">
@@ -329,9 +297,8 @@
   <section class="links-section" id="links-section">
     <h2 class="section-title">Modern VPN Links</h2>
     <p class="section-subtitle">Click on any box to copy your link</p>
-
     <div class="subscription-container" id="links">
-      <!-- باکس‌ها توسط جاوااسکریپت اضافه می‌شوند -->
+      <!-- توسط جاوااسکریپت اضافه می‌شوند -->
     </div>
   </section>
 
@@ -340,7 +307,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از فایل sub.txt یا هر منبع دیگر
+    // خواندن لینک‌ها از sub.txt یا هر منبع دیگر
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
@@ -355,7 +322,6 @@
           textSpan.textContent = `UltraVPN #${index + 1}`;
           box.appendChild(textSpan);
 
-          // کپی لینک
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
