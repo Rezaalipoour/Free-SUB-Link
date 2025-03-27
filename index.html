@@ -1,67 +1,81 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  background-attachment: fixed;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px 20px;
-  min-height: 100vh;
-  background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
-}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription Links</title>
+  <style>
+    /* یک استایل ساده برای صفحه */
+    body {
+      background: #e6f7ff; /* رنگ پس‌زمینه کمی روشن */
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #555;
+    }
+    .subscription-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .subscription-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      word-wrap: break-word; /* لینک‌های طولانی را بشکند */
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .subscription-box:hover {
+      background-color: #ddf; /* رنگ جعبه هنگام هاور */
+    }
+  </style>
+</head>
+<body>
+  <h1>Subscription Links</h1>
+  <p>روی هر جعبه کلیک کنید تا لینک آن کپی شود</p>
 
-h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-  text-shadow: 1px 1px 3px #00000050;
-}
+  <!-- این div جایگاه نمایش لینک‌هاست -->
+  <div class="subscription-container" id="links"></div>
 
-p.subtitle {
-  font-size: 1.2em;
-  color: #dce3ea;
-  margin-bottom: 40px;
-  text-align: center;
-}
+  <script>
+    // محتوای فایل sub.txt را می‌خوانیم
+    fetch('sub.txt')
+      .then(response => response.text())
+      .then(data => {
+        // داده‌ها را بر اساس خط جدا می‌کنیم
+        const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
+        const container = document.getElementById('links');
 
-.link-box {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 20px 60px 20px 20px;
-  border-radius: 12px;
-  margin: 15px 0;
-  width: 100%;
-  max-width: 800px;
-  word-break: break-word;
-  position: relative;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease-in-out, background 0.3s;
-}
+        // برای هر خط یک جعبه می‌سازیم
+        lines.forEach(line => {
+          const box = document.createElement('div');
+          box.className = 'subscription-box';
+          box.textContent = line;
 
-.link-box:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-3px);
-}
+          // رویداد کلیک برای کپی کردن
+          box.addEventListener('click', () => {
+            navigator.clipboard.writeText(line)
+              .then(() => alert('لینک کپی شد!'))
+              .catch(err => console.error('خطا در کپی کردن:', err));
+          });
 
-.copy-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  padding: 7px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.85em;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s;
-}
-
-.copy-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
-  color: #000;
-}
+          container.appendChild(box);
+        });
+      })
+      .catch(error => {
+        console.error('خطا در دریافت sub.txt:', error);
+      });
+  </script>
+</body>
+</html>
