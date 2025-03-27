@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Modern VPN Subscription - Inline-Block Centered</title>
+  <title>Modern VPN Subscription - Inline-Flex Centered</title>
 
   <!-- گوگل فونت -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -20,7 +20,7 @@
       --accent2: #8e2de2;
       --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
-      /* رنگ‌های گرادیان باکس به دلخواه تغییر دهید */
+      /* رنگ‌های گرادیان برای باکس‌ها را می‌توانید تغییر دهید */
       --box-gradient1: #8e2de2;
       --box-gradient2: #4a00e0;
     }
@@ -98,6 +98,7 @@
       position: relative;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
+    /* تصویر جایگزین‌شده */
     .feature-container img {
       flex: 1;
       object-fit: cover;
@@ -182,8 +183,9 @@
       padding: 3rem 1rem 4rem;
       max-width: 1300px;
       margin: 0 auto;
-      text-align: center; /* برای تیتر و زیرتیتر */
+      text-align: center; /* برای تیتر و توضیحات */
     }
+    /* عنوان مدرن‌تر */
     .section-title {
       font-size: 2.2rem;
       font-weight: 700;
@@ -197,39 +199,40 @@
     }
 
     /*
-      الگوی Inline-Block + White-Space nowrap برای قرارگیری در یک خط
-      text-align: center برای مرکزچین شدن باکس‌ها در صورت کافی بودن عرض
+      برای وسط‌چین شدن باکس‌ها در صورت وجود فضای کافی
+      و اسکرول افقی در صورت کمبود فضا
     */
     .subscription-container {
-      display: block;          /* مهم: روی block تنظیم شود */
-      white-space: nowrap;     /* باکس‌ها در یک خط باقی بمانند */
-      overflow-x: auto;        /* اسکرول افقی در صورت کمبود فضا */
-      margin: 0 auto;          /* اگر خواستید خود کانتینر وسط باشد */
-      padding: 0;              /* بدون پدینگ اضافه */
-      text-align: center;      /* مرکزچین شدن inline-block ها */
+      display: block;
+      white-space: nowrap;
+      overflow-x: auto;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
     }
 
     .subscription-box {
-      display: inline-block;   /* برای قرارگیری در یک خط */
-      vertical-align: middle;  /* وسط‌چین عمودی در کنار هم */
+      /* به جای inline-block از inline-flex استفاده می‌کنیم تا راحت‌تر وسط‌چین عمودی شود */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
       width: 120px;
       height: 120px;
-      margin: 0 8px;          /* فاصله افقی بین باکس‌ها */
+      margin: 0 8px;
       cursor: pointer;
       border-radius: 14px;
       overflow: hidden;
       color: #fff;
-      text-align: center;
       background:
-        /* لایه شفاف رویی */
         linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        /* گرادینت باکس */
         linear-gradient(135deg, var(--box-gradient1), var(--box-gradient2)) border-box;
       border: 2px solid transparent;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       backdrop-filter: blur(6px);
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
+      text-align: center;
     }
 
     .subscription-box::before {
@@ -251,18 +254,14 @@
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
-
     .subscription-box span {
-      /* متن معمولی، نه بولد */
-      font-weight: 400;
+      font-weight: 400; /* متن معمولی */
       font-size: 0.9rem;
       line-height: 1.4;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      display: inline-block; /* برای مرکزچین بهتر داخل باکس */
-      margin: 0 5px;
-      position: relative;
       z-index: 1;
       max-width: 100%;
+      text-align: center;
     }
 
     /* FOOTER */
@@ -288,9 +287,10 @@
   <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
+      <!-- عکسی که خواستید جایگزین شود -->
       <img
-        src="https://images.pexels.com/photos/4450412/pexels-photo-4450412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-        alt="Security"
+        src="https://picodl.com/download/3d-cyber-security-3d-icon_249956-407.jpg"
+        alt="Security Icon"
       />
       <div class="feature-content">
         <div class="pink-card">
@@ -316,11 +316,12 @@
 
   <!-- LINKS SECTION -->
   <section class="links-section" id="links-section">
-    <h2 class="section-title">Subscription Links</h2>
-    <p class="section-subtitle">Click any box to copy its link</p>
+    <!-- عنوان مدرن‌تر -->
+    <h2 class="section-title">Modern VPN Links</h2>
+    <p class="section-subtitle">Click on any box to copy your link</p>
 
     <div class="subscription-container" id="links">
-      <!-- Boxes appended by JavaScript -->
+      <!-- باکس‌ها توسط جاوااسکریپت اضافه می‌شوند -->
     </div>
   </section>
 
@@ -329,7 +330,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از sub.txt (یا داده‌های مشابه)
+    // خواندن لینک‌ها از sub.txt
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
@@ -340,12 +341,11 @@
           const box = document.createElement('div');
           box.className = 'subscription-box';
 
-          // متن درون باکس (مثلاً شماره سرور)
           const textSpan = document.createElement('span');
           textSpan.textContent = `UltraVPN #${index + 1}`;
+
           box.appendChild(textSpan);
 
-          // رویداد کلیک برای کپی‌کردن لینک
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('Link copied to clipboard!'))
