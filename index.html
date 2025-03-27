@@ -21,9 +21,9 @@
       --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
       
-      /* نمونه‌ای از گرادیان مدرن‌تر برای باکس‌ها */
-      --box-gradient1: #743ad5; /* بنفش تیره */
-      --box-gradient2: #d53a9d; /* صورتی/بنفش روشن */
+      /* نمونه گرادیان مدرن‌تر برای باکس‌ها */
+      --box-gradient1: #8e2de2;  /* بنفش/سرمه‌ای */
+      --box-gradient2: #4a00e0;  /* بنفش تیره‌تر */
     }
 
     * {
@@ -37,10 +37,6 @@
       background-color: var(--bg-color); 
       color: var(--text-color);
       overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
     }
 
     /* ====== HERO SECTION ====== */
@@ -201,20 +197,24 @@
       margin-bottom: 2rem;
     }
 
-    /*
-      1) از حالت nowrap خارج شد تا باکس‌ها در مرکز چیده شوند.
-      2) justify-content: center برای مرکزگرایی.
-      3) اگر می‌خواهید اسکرول افقی داشته باشید، می‌توانید overflow-x: auto; و flex-wrap: nowrap را برگردانید.
+    /* 
+      1) باکس‌ها در یک خط
+      2) اسکرول افقی در صورت زیاد بودن باکس‌ها
+      3) فاصله بین باکس‌ها 
+      4) عدم شکستن به خط بعد
     */
     .subscription-container {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
       gap: 16px;
       margin: 0 auto;
       padding: 1rem;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      max-width: 900px; /* می‌توانید بسته به سلیقه تغییر دهید */
+      /* برای محدود کردن پهنای کل کانتینر در صورت تمایل */
+      max-width: 90vw; 
+      /* اگر دوست دارید scrollbar مخفی شود، باید CSS سفارشی برای اسکرول‌بار بدهید */
     }
 
     /* ====== SUBSCRIPTION BOX (Glass + New Gradient) ====== */
@@ -234,7 +234,7 @@
       background:
         /* لایه شفاف رویی */
         linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)) padding-box,
-        /* گرادینت جدید با رنگ‌های مدرن‌تر */
+        /* گرادینت جدید */
         linear-gradient(135deg, var(--box-gradient1), var(--box-gradient2)) border-box;
       border: 2px solid transparent;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
@@ -261,9 +261,9 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
     .subscription-box span {
-      padding: 0 10px;
+      /* حذف حالت بولد */
+      font-weight: 400;
       font-size: 0.9rem;
-      font-weight: 700;
       line-height: 1.4;
       z-index: 1;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
