@@ -1,29 +1,94 @@
-import requests
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscription Links</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1DA1F2, #0d8ddb);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
 
-urls = [
-    "https://raw.githubusercontent.com/10ium/multi-proxy-config-fetcher/refs/heads/main/configs/proxy_configs.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_1.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_2.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_3.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_4.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mtn/sub_1.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mtn/sub_2.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mtn/sub_3.txt",
-    "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mtn/sub_4.txt"
-]
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0;
+    }
 
-links = set()
+    p.subtitle {
+      font-size: 1em;
+      color: #dce3ea;
+      margin-bottom: 30px;
+    }
 
-for url in urls:
-    try:
-        response = requests.get(url)
-        if response.ok:
-            for line in response.text.strip().splitlines():
-                if line.strip().startswith(("vless://", "vmess://", "trojan://", "ss://")):
-                    links.add(line.strip())
-    except Exception as e:
-        print(f"Error fetching {url}: {e}")
+    .link-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 800px;
+      word-break: break-all;
+      position: relative;
+      transition: background 0.3s;
+    }
 
-with open("sub.txt", "w", encoding="utf-8") as f:
-    for link in links:
-        f.write(link + "\n")
+    .link-box:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffffff33;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    .copy-btn:hover {
+      background: #ffffff55;
+    }
+  </style>
+</head>
+<body>
+  <h1>Subscription Links</h1>
+  <p class="subtitle">Click any box to copy the subscription link.</p>
+
+  <script>
+    fetch('sub.txt')
+      .then(response => response.text())
+      .then(text => {
+        const lines = text.split('\n').filter(line => line.trim() !== '');
+        lines.forEach(line => {
+          const box = document.createElement('div');
+          box.className = 'link-box';
+          box.textContent = line;
+
+          const btn = document.createElement('button');
+          btn.textContent = 'Copy';
+          btn.className = 'copy-btn';
+          btn.onclick = () => {
+            navigator.clipboard.writeText(line);
+            btn.textContent = 'Copied!';
+            setTimeout(() => (btn.textContent = 'Copy'), 1500);
+          };
+
+          box.appendChild(btn);
+          document.body.appendChild(box);
+        });
+      });
+  </script>
+</body>
+</html>
