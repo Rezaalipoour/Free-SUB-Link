@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8">
   <title>Modern VPN Subscription</title>
+  <!-- اضافه‌کردن لوگوی فاوآیکن در تب مرورگر -->
+  <link rel="icon" href="https://picodl.com/download/simple-elegant-abstract-letter-shield-logo_327835-8839.jpg" type="image/png">
+
+  <!-- گوگل فونت -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
     rel="stylesheet"
   />
+
   <style>
     :root {
       --text-color: #fff;
@@ -131,23 +136,18 @@
     .section-subtitle {
       font-size: 1rem; color: #aaa; margin-bottom: 2rem;
     }
-
-    /* برداشتن مستطیل پشت باکس‌ها */
     .subscription-container {
       display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
-      /* هیچ background/border/box-shadow اینجا نداریم */
       padding: 2rem; margin: 0 auto;
     }
-
-    /* گوشه‌های گردتر + گرادیان تندتر */
     .subscription-box {
       display: flex; align-items: center; justify-content: center;
       width: 120px; height: 120px; cursor: pointer; text-align: center;
-      border-radius: 20px;        /* گوشه‌ها بزرگ‌تر شده */
+      border-radius: 20px;  /* گوشه‌های گردتر */
       color: #fff;
-      /* گرادیان بنفش تا صورتی تندتر/مدرن‌تر */
+      /* گرادیان تندتر و مدرن‌تر */
       background: linear-gradient(135deg, #7E17F2, #FF00E6);
-      border: none;              /* حذف کادر داخلی */
+      border: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -162,8 +162,7 @@
     }
 
     footer {
-      text-align: center;
-      padding: 1rem; font-size: 0.85rem; color: #666;
+      text-align: center; padding: 1rem; font-size: 0.85rem; color: #666;
     }
   </style>
 </head>
@@ -213,7 +212,7 @@
     <p class="section-subtitle">Click on any box to copy your link</p>
 
     <div class="subscription-container" id="links">
-      <!-- باکس‌ها توسط جاوااسکریپت اضافه می‌شوند -->
+      <!-- باکس‌های لینک با جاوااسکریپت اضافه می‌شوند -->
     </div>
   </section>
 
@@ -222,7 +221,7 @@
   </footer>
 
   <script>
-    // خواندن لینک‌ها از sub.txt
+    // نمونه: خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
