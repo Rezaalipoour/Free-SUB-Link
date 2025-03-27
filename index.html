@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Modern VPN Subscription</title>
-  <!-- فونت مدرن (Inter) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta charset="UTF-8"/>
+  <title>Modern VPN Subscription - Glass Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
     rel="stylesheet"
@@ -24,20 +23,15 @@
       text-decoration: none;
     }
 
-    /* =======================
-       1) HERO SECTION
-    ======================== */
+    /* ====== 1) HERO SECTION (همان قبلی برای نمونه) ====== */
     .hero {
-      height: 80vh; /* ارتفاع سکشن اول */
+      height: 80vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       background: linear-gradient(135deg, #0a0a0a, #5B0EBD);
-      /* گرادینت مشکی تا بنفش */
-      position: relative;
-      overflow: hidden;
     }
     .hero h1 {
       font-size: 4rem;
@@ -53,7 +47,7 @@
     }
     .cta-btn {
       padding: 1rem 2rem;
-      background: #f00596; /* رنگ دلخواه برای CTA */
+      background: #f00596;
       border: none;
       border-radius: 50px;
       font-weight: 600;
@@ -63,19 +57,16 @@
     }
     .cta-btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(240, 5, 150, 0.4);
+      box-shadow: 0 8px 20px rgba(240,5,150,0.4);
     }
 
-    /* =======================
-       2) FEATURE SECTION
-    ======================== */
+    /* ====== 2) FEATURE SECTION (برای نمونه مشابه قبل) ====== */
     .feature-section {
       display: flex;
       justify-content: center;
       padding: 3rem 1rem;
     }
     .feature-container {
-      /* جعبه‌ی مشکی که تصویر و کارت صورتی داخلش هستند */
       background: #000000;
       border-radius: 24px;
       width: 90%;
@@ -87,14 +78,12 @@
       overflow: hidden;
       position: relative;
     }
-    /* تصویر در سمت راست */
     .feature-container img {
       flex: 1;
       object-fit: cover;
       width: 50%;
       height: 100%;
     }
-    /* محتوا در سمت چپ */
     .feature-content {
       flex: 1;
       padding: 2rem;
@@ -103,8 +92,6 @@
       justify-content: center;
       gap: 1rem;
     }
-
-    /* کارت صورتی روی محتوای سمت چپ */
     .pink-card {
       background: linear-gradient(135deg, #f00596, #8e2de2);
       padding: 1.5rem;
@@ -112,7 +99,7 @@
       color: #fff;
       max-width: 300px;
       position: relative;
-      box-shadow: 0 8px 20px rgba(240, 5, 150, 0.3);
+      box-shadow: 0 8px 20px rgba(240,5,150,0.3);
     }
     .pink-card h3 {
       margin-bottom: 0.5rem;
@@ -124,24 +111,16 @@
       line-height: 1.4;
       opacity: 0.9;
     }
-    /* فلش در کارت صورتی */
     .pink-card .arrow {
       position: absolute;
       top: 1rem;
       right: 1rem;
       font-size: 1.2rem;
     }
-
-    /* آمار و ارقام (همان 47% و 4810) */
     .feature-stats {
       display: flex;
       gap: 2rem;
       margin-top: 1rem;
-    }
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
     }
     .stat-item h4 {
       font-size: 2rem;
@@ -154,8 +133,6 @@
       color: #aaa;
       line-height: 1.4;
     }
-
-    /* واکنشگرایی بخش فیچر برای موبایل: تصویر پایین بیاید */
     @media (max-width: 768px) {
       .feature-container {
         flex-direction: column;
@@ -170,27 +147,25 @@
       }
     }
 
-    /* =======================
-       3) LINKS SECTION
-    ======================== */
+    /* ====== 3) LINKS SECTION ====== */
     .links-section {
       padding: 3rem 1rem 4rem;
       max-width: 1300px;
       margin: 0 auto;
+      text-align: center;
     }
     .section-title {
-      text-align: center;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .section-subtitle {
-      text-align: center;
       font-size: 1rem;
       color: #aaa;
       margin-bottom: 2rem;
     }
 
+    /* گرید نمایش باکس‌ها */
     .subscription-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -198,83 +173,87 @@
       padding: 0 1rem;
       justify-items: center;
     }
+
+    /* ======= GLASS + GRADIENT BORDER BOX ======= */
     .subscription-box {
       position: relative;
       width: 200px;
-      height: 200px;
+      height: 220px; /* کمی بلندتر تا متن بهتر جا شود */
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: #fff;
       cursor: pointer;
-      border-radius: 12px;
+      border-radius: 20px; /* شعاع گردتر برای زیبایی */
       overflow: hidden;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.2);
+      /* ترفند ایجاد حاشیه‌ی گرادینتی شفاف */
+      background: 
+        linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)) padding-box,
+        linear-gradient(135deg, #5B0EBD, #f00596) border-box;
+      border: 2px solid transparent; 
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .subscription-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
-    }
-    /* گرادینت مشکی-بنفش متحرک در پس‌زمینه‌ی هر مربع */
+    /* انیمیشن ملایم پس‌زمینه‌ی درونی (میتوانید حذف کنید اگر نمی‌خواهید) */
     .subscription-box::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -1;
       background: linear-gradient(45deg, #000000, #5B0EBD);
       background-size: 200% 200%;
-      animation: boxGradient 5s ease-in-out infinite;
-      opacity: 0.6;
+      opacity: 0.3;
+      z-index: -1;
+      animation: subtleMove 8s ease-in-out infinite;
     }
-    @keyframes boxGradient {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
+    @keyframes subtleMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    .subscription-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    }
+
     .subscription-box span {
       padding: 0 10px;
       font-size: 0.8rem;
       line-height: 1.4;
       word-wrap: break-word;
+      z-index: 1; /* برای قرارگیری روی ::before */
     }
 
-    /* =======================
-       4) FOOTER
-    ======================== */
+    /* ====== 4) FOOTER ====== */
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
       color: #666;
     }
-
   </style>
 </head>
 <body>
 
-  <!-- 1) HERO SECTION -->
+  <!-- HERO -->
   <section class="hero">
     <h1>ProCreative VPN</h1>
     <p>Secure, Modern, and Free</p>
-    <a href="#feature" class="cta-btn">Discover More</a>
+    <button class="cta-btn" onclick="document.getElementById('feature').scrollIntoView({ behavior: 'smooth' });">
+      Discover More
+    </button>
   </section>
 
-  <!-- 2) FEATURE SECTION -->
+  <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
-      <!-- تصویر در سمت راست -->
       <img
         src="https://images.pexels.com/photos/4450412/pexels-photo-4450412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
         alt="Building"
       />
-      <!-- محتوا در سمت چپ -->
       <div class="feature-content">
-        <!-- کارت صورتی روی بخش سمت چپ -->
         <div class="pink-card">
           <div class="arrow">⤴</div>
           <h3>From Vision to Structure</h3>
@@ -283,8 +262,6 @@
             Maecenas porttitor congue massa.
           </p>
         </div>
-
-        <!-- آمارها -->
         <div class="feature-stats">
           <div class="stat-item">
             <h4>47%</h4>
@@ -299,13 +276,13 @@
     </div>
   </section>
 
-  <!-- 3) LINKS SECTION -->
+  <!-- LINKS SECTION -->
   <section class="links-section" id="links-section">
     <h2 class="section-title">Subscription Links</h2>
     <p class="section-subtitle">Click any square to copy its link</p>
 
     <div class="subscription-container" id="links">
-      <!-- Boxes will be added by JS -->
+      <!-- Boxes appended by JavaScript -->
     </div>
   </section>
 
