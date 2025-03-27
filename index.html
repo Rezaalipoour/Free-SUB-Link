@@ -8,40 +8,41 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #1DA1F2, #0d8ddb);
+      background: linear-gradient(135deg, #1DA1F2, #0e76a8);
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 20px;
+      padding: 40px 20px;
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 0;
+      font-size: 2.8em;
+      margin-bottom: 5px;
     }
 
     p.subtitle {
-      font-size: 1em;
-      color: #dce3ea;
-      margin-bottom: 30px;
+      font-size: 1.1em;
+      color: #e0ecf6;
+      margin-bottom: 40px;
     }
 
     .link-box {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 15px 20px;
-      border-radius: 10px;
-      margin: 10px 0;
-      width: 100%;
-      max-width: 800px;
-      word-break: break-all;
       position: relative;
-      transition: background 0.3s;
+      background: #ffffff1a;
+      border: 1px solid #ffffff3b;
+      border-radius: 12px;
+      padding: 15px 50px 15px 20px;
+      margin: 12px 0;
+      width: 100%;
+      max-width: 850px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      word-break: break-all;
+      transition: all 0.3s;
     }
 
     .link-box:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: #ffffff26;
     }
 
     .copy-btn {
@@ -50,15 +51,23 @@
       right: 10px;
       background: #ffffff33;
       border: none;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
+      color: #fff;
+      padding: 6px 14px;
+      font-size: 0.85em;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.9em;
+      transition: background 0.3s;
     }
 
     .copy-btn:hover {
       background: #ffffff55;
+    }
+
+    @media screen and (max-width: 600px) {
+      .link-box {
+        font-size: 0.85em;
+        padding-right: 60px;
+      }
     }
   </style>
 </head>
@@ -66,11 +75,14 @@
   <h1>Subscription Links</h1>
   <p class="subtitle">Click any box to copy the subscription link.</p>
 
+  <div id="links-container"></div>
+
   <script>
     fetch('sub.txt')
       .then(response => response.text())
       .then(text => {
         const lines = text.split('\n').filter(line => line.trim() !== '');
+        const container = document.getElementById('links-container');
         lines.forEach(line => {
           const box = document.createElement('div');
           box.className = 'link-box';
@@ -86,7 +98,7 @@
           };
 
           box.appendChild(btn);
-          document.body.appendChild(box);
+          container.appendChild(box);
         });
       });
   </script>
