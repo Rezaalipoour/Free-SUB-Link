@@ -1,73 +1,116 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <title>Subscription Links</title>
+  <meta charset="UTF-8" />
+  <title>Modern Subscription Links</title>
+  <!-- از گوگل فونت برای فونت‌های زیباتر استفاده می‌کنیم -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
   <style>
-    /* یک استایل ساده برای صفحه */
-    body {
-      background: #e6f7ff; /* رنگ پس‌زمینه کمی روشن */
-      font-family: sans-serif;
-      text-align: center;
+    /* استایل کلی صفحه */
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 20px;
+      padding: 0;
     }
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* یک گرادینت نسبتا مدرن برای پس زمینه */
+      background: linear-gradient(135deg, #74abe2 0%, #5563de 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    /* عنوان اصلی */
     h1 {
-      color: #333;
-      margin-bottom: 10px;
+      color: #fff;
+      margin-top: 2rem;
+      font-size: 2rem;
+      text-shadow: 0 2px 2px rgba(0,0,0,0.2);
     }
+    /* زیرعنوان یا توضیح زیر عنوان */
     p {
-      color: #555;
+      color: #eee;
+      margin: 0.5rem 0 1.5rem;
+      font-size: 1rem;
     }
+    /* کانتینر باکس‌ها (برای مدیریت چینش) */
     .subscription-container {
       display: flex;
       flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
       justify-content: center;
-      margin-top: 20px;
+      padding: 0 20px;
     }
+    /* استایل باکس‌های هر لینک (گلس‌مورفیسم) */
     .subscription-box {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 10px;
-      margin: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px); /* برای جلوه‌ی مات کردن پشت زمینه */
+      border-radius: 12px;
+      padding: 20px;
       width: 300px;
-      word-wrap: break-word; /* لینک‌های طولانی را بشکند */
+      min-height: 100px;
+      color: #fff;
       cursor: pointer;
-      transition: background-color 0.2s;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow-wrap: break-word; /* شکستن متن لینک‌های طولانی */
+      word-wrap: break-word;     /* برای سازگاری بیشتر */
+      text-align: center;
     }
+    /* افکت هاور برای برجسته کردن باکس */
     .subscription-box:hover {
-      background-color: #ddf; /* رنگ جعبه هنگام هاور */
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+    /* فوتر ساده در انتهای صفحه */
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      color: #fff;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
   <h1>Subscription Links</h1>
-  <p>روی هر جعبه کلیک کنید تا لینک آن کپی شود</p>
+  <p>روی هر باکس کلیک کنید تا لینک آن کپی شود</p>
 
-  <!-- این div جایگاه نمایش لینک‌هاست -->
+  <!-- این div جایگاه نمایش لینک‌ها را در بر می‌گیرد -->
   <div class="subscription-container" id="links"></div>
 
+  <!-- فوتر اختیاری برای درج توضیح یا کپی‌رایت -->
+  <footer>© 2025 YourName</footer>
+
   <script>
-    // محتوای فایل sub.txt را می‌خوانیم
+    // فایل sub.txt را می‌خوانیم تا لینک‌ها را بارگذاری کنیم
     fetch('sub.txt')
       .then(response => response.text())
       .then(data => {
-        // داده‌ها را بر اساس خط جدا می‌کنیم
+        // متن دریافتی را خط به خط جدا می‌کنیم
         const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
         const container = document.getElementById('links');
 
-        // برای هر خط یک جعبه می‌سازیم
+        // برای هر خط یک باکس می‌سازیم
         lines.forEach(line => {
           const box = document.createElement('div');
           box.className = 'subscription-box';
           box.textContent = line;
 
-          // رویداد کلیک برای کپی کردن
+          // رویداد کلیک برای کپی کردن متن لینک به کلیپ‌بورد
           box.addEventListener('click', () => {
             navigator.clipboard.writeText(line)
               .then(() => alert('لینک کپی شد!'))
-              .catch(err => console.error('خطا در کپی کردن:', err));
+              .catch(err => console.error('خطا در کپی کردن لینک:', err));
           });
 
           container.appendChild(box);
