@@ -1,106 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Subscription Links</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1DA1F2, #0e76a8);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      color: #f1faee;
+      padding: 40px;
+      text-align: center;
     }
 
     h1 {
-      font-size: 2.8em;
       margin-bottom: 5px;
+      font-size: 36px;
     }
 
-    p.subtitle {
-      font-size: 1.1em;
-      color: #e0ecf6;
+    p {
       margin-bottom: 40px;
+      font-size: 16px;
+      color: #a8dadc;
     }
 
     .link-box {
-      position: relative;
-      background: #ffffff1a;
-      border: 1px solid #ffffff3b;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #a8dadc55;
       border-radius: 12px;
-      padding: 15px 50px 15px 20px;
-      margin: 12px 0;
-      width: 100%;
-      max-width: 850px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 15px 20px;
+      margin: 15px auto;
+      max-width: 800px;
       word-break: break-all;
-      transition: all 0.3s;
-    }
-
-    .link-box:hover {
-      background: #ffffff26;
+      position: relative;
     }
 
     .copy-btn {
       position: absolute;
       top: 10px;
       right: 10px;
-      background: #ffffff33;
+      background: #f1faee;
+      color: #1d3557;
       border: none;
-      color: #fff;
-      padding: 6px 14px;
-      font-size: 0.85em;
+      padding: 6px 10px;
       border-radius: 6px;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
       transition: background 0.3s;
     }
 
     .copy-btn:hover {
-      background: #ffffff55;
-    }
-
-    @media screen and (max-width: 600px) {
-      .link-box {
-        font-size: 0.85em;
-        padding-right: 60px;
-      }
+      background: #a8dadc;
     }
   </style>
 </head>
 <body>
   <h1>Subscription Links</h1>
-  <p class="subtitle">Click any box to copy the subscription link.</p>
-
+  <p>Click "Copy Link" button to copy each configuration easily.</p>
   <div id="links-container"></div>
 
   <script>
-    fetch('sub.txt')
-      .then(response => response.text())
-      .then(text => {
-        const lines = text.split('\n').filter(line => line.trim() !== '');
-        const container = document.getElementById('links-container');
-        lines.forEach(line => {
-          const box = document.createElement('div');
-          box.className = 'link-box';
-          box.textContent = line;
+    async function loadLinks() {
+      const response = await fetch('sub.txt');
+      const text = await response.text();
+      const lines = text.trim().split('\n');
+      const container = document.getElementById('links-container');
 
-          const btn = document.createElement('button');
-          btn.textContent = 'Copy';
-          btn.className = 'copy-btn';
-          btn.onclick = () => {
-            navigator.clipboard.writeText(line);
-            btn.textContent = 'Copied!';
-            setTimeout(() => (btn.textContent = 'Copy'), 1500);
-          };
-
-          box.appendChild(btn);
-          container.appendChild(box);
-        });
+      lines.forEach((line, index) => {
+        const box = document.createElement('div');
+        box.className = 'link-box';
+        box.innerHTML = `
+          <button class="copy-btn" onclick="copyToClipboard('${line.replace(/'/g, "\\'")}')">Copy Link</button>
+          ${line}
+        `;
+        container.appendChild(box);
       });
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Link copied to clipboard ✅");
+      });
+    }
+
+    loadLinks();
   </script>
 </body>
 </html>
