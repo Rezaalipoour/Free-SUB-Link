@@ -59,19 +59,18 @@
       padding: 0 1rem;
     }
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3rem; /* کمی کوچک‌تر از نسخه قبلی */
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
       text-shadow: 0 4px 20px rgba(91, 14, 189, 0.6);
     }
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.1rem; /* کمی کوچک‌تر از نسخه قبلی */
       margin-bottom: 2rem;
       opacity: 0.9;
       color: #ccc;
     }
-
     .cta-btn {
       padding: 1rem 2rem;
       background: linear-gradient(135deg, var(--accent1), var(--accent2));
@@ -80,11 +79,10 @@
       font-weight: 600;
       color: #fff;
       cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: box-shadow 0.3s;
       box-shadow: 0 4px 15px rgba(240, 5, 150, 0.3);
     }
     .cta-btn:hover {
-      transform: translateY(-4px);
       box-shadow: 0 8px 20px rgba(240, 5, 150, 0.4);
     }
 
@@ -204,22 +202,22 @@
     }
 
     /*
-     * باکس‌های سرور در 4 ستون (25% عرض) بدون اسکرول افقی.
-     * اگر تعداد باکس‌ها بیش از 4 باشد، به ردیف بعدی می‌روند.
-     */
+      استفاده از CSS Grid برای چیدن باکس‌ها در 4 ستون
+      gap: فاصله بین باکس‌ها
+    */
     .subscription-container {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
+
     .subscription-box {
-      width: 25%;
-      height: 120px; /* ارتفاع ثابت (مربع-ish) */
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 120px;
       cursor: pointer;
       text-align: center;
       border-radius: 20px;
@@ -229,9 +227,10 @@
       border: none;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 
-      /* انیمیشن نرم برای تغییر رنگ/بوردر/مقیاس */
-      transition: background 1s, border 1s, transform 1s, box-shadow 1s;
+      /* تغییر رنگ و بوردر به صورت نرم */
+      transition: background 0.6s, border 0.6s;
     }
+
     .subscription-box span {
       font-weight: 600;
       font-size: 0.95rem;
@@ -239,17 +238,14 @@
       max-width: 100%;
       text-align: center;
     }
-    /* انیمیشن شناور هنگام هاور */
-    .subscription-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    }
-    /* حالت کلیک با تاخیر نرم */
+
+    /*
+      حالت کلیک: مشکی + بوردر بنفش
+      پس از برداشتن انگشت، با کمی مکث برمی‌گردد
+    */
     .subscription-box.box-active {
       background: #000;
       border: 1px solid #5B0EBD;
-      color: #fff;
-      transform: scale(1.03);
     }
 
     footer {
@@ -264,24 +260,16 @@
       .hero {
         min-height: 60vh;
       }
-      /* هدر در گوشی بزرگ‌تر شود */
       .hero h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
       .hero p {
-        font-size: 1.2rem;
-      }
-
-      .cta-btn {
-        padding: 0.8rem 1.5rem;
         font-size: 1rem;
       }
       .feature-container {
         flex-direction: column;
-        min-height: auto;
         margin: 1rem auto;
       }
-      /* آبجکت سه‌بعدی بزرگ‌تر در تبلت */
       .feature-img-wrapper img {
         width: 150%;
       }
@@ -291,14 +279,15 @@
       .pink-card p {
         font-size: 0.85rem;
       }
-      .stat-item {
-        text-align: center;
-      }
       .stat-item h4 {
         font-size: 1.6rem;
       }
       .stat-item p {
         font-size: 0.8rem;
+      }
+      /* ارتفاع باکس‌های لینک کمی کمتر */
+      .subscription-box {
+        height: 100px;
       }
       .subscription-box span {
         font-size: 0.85rem;
@@ -311,14 +300,10 @@
         min-height: 55vh;
       }
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
       .hero p {
-        font-size: 1.1rem;
-      }
-      .cta-btn {
-        padding: 0.7rem 1rem;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
       /* آبجکت سه‌بعدی خیلی بزرگ در گوشی */
       .feature-img-wrapper img {
@@ -340,13 +325,12 @@
       .stat-item p {
         font-size: 0.75rem;
       }
-      /* متن باکس سرورها در گوشی کوچک‌تر */
-      .subscription-box span {
-        font-size: 0.8rem;
-      }
-      /* ارتفاع باکس‌ها کمی کمتر تا چهار تایی در یک ردیف جای بگیرند */
+      /* باکس‌های لینک و متن داخلشان کوچک‌تر */
       .subscription-box {
-        height: 100px;
+        height: 90px;
+      }
+      .subscription-box span {
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -408,16 +392,18 @@
   </footer>
 
   <script>
-    // با این روش، انیمیشن کلیک بسیار نرم می‌شود: نگه‌داشتن انگشت -> تبدیل به مشکی
-    // و پس از رهاکردن انگشت، کمی مکث می‌کنیم تا برگردد به رنگ قبلی.
+    // تابع برای افزودن کلاس box-active هنگام کلیک (pointerdown)
     function handlePointerDown(e) {
       e.currentTarget.classList.add('box-active');
     }
+    // تابع برای حذف کلاس box-active پس از مکث (pointerup)
     function handlePointerUp(e) {
-      // کمی مکث کنیم تا حالت توخالی دیده شود
       setTimeout(() => {
         e.currentTarget.classList.remove('box-active');
-      }, 600); // 0.6 ثانیه مکث
+      }, 500); // نیم ثانیه مکث تا حس نرم داشته باشد
+    }
+    function handlePointerCancel(e) {
+      e.currentTarget.classList.remove('box-active');
     }
 
     fetch("sub.txt")
@@ -435,9 +421,6 @@
           textSpan.textContent = `Server ${index + 1}`;
           box.appendChild(textSpan);
 
-          // جلوگیری از انتخاب متن
-          textSpan.style.userSelect = 'none';
-
           // کپی لینک از sub.txt به کلیپ‌بورد
           box.addEventListener("click", () => {
             navigator.clipboard
@@ -445,11 +428,12 @@
               .catch((err) => console.error("Failed to copy link:", err));
           });
 
-          // انیمیشن نرم برای کلیک
+          // حالت کلیک نرم:
           box.addEventListener('pointerdown', handlePointerDown);
           box.addEventListener('pointerup', handlePointerUp);
-          box.addEventListener('pointercancel', handlePointerUp); 
-          // pointercancel برای مواردی مثل اسکرول یا خارج‌شدن انگشت
+          box.addEventListener('pointercancel', handlePointerCancel);
+          // اگر کاربر انگشتش را بیرون باکس بکشد:
+          box.addEventListener('pointerleave', handlePointerCancel);
 
           container.appendChild(box);
         });
