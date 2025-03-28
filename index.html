@@ -4,27 +4,15 @@
   <meta charset="UTF-8" />
   <!-- تگ viewport برای موبایل -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <!-- رنگ نوار مرورگر در موبایل (شروع با بنفش) -->
   <meta name="theme-color" content="#5B0EBD" />
-
   <title>Modern VPN Subscription</title>
-
   <!-- فاوآیکن (در صورت نیاز) -->
-  <link
-    rel="icon"
-    href="https://picodl.com/download/simple-elegant-abstract-letter-shield-logo_327835-8839.jpg"
-    type="image/png"
-  />
-
+  <link rel="icon" href="https://picodl.com/download/simple-elegant-abstract-letter-shield-logo_327835-8839.jpg" type="image/png" />
   <!-- گوگل فونت -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --text-color: #fff;
@@ -33,20 +21,17 @@
       --accent3: #5B0EBD;
       --gradient-hero: linear-gradient(135deg, #0a0a0a 30%, #5B0EBD 100%);
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: "Inter", sans-serif;
     }
-
     body {
       background-color: #0a0a0a;
       color: var(--text-color);
       overflow-x: hidden;
     }
-
     /* ====== هدر (Hero) ====== */
     .hero {
       background: var(--gradient-hero);
@@ -59,7 +44,7 @@
       padding: 0 1rem;
     }
     .hero h1 {
-      font-size: 3rem; /* دسکتاپ/تبلت */
+      font-size: 3rem;
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
@@ -85,7 +70,6 @@
     .cta-btn:hover {
       box-shadow: 0 8px 20px rgba(240, 5, 150, 0.4);
     }
-
     /* ====== FEATURE SECTION ====== */
     .feature-section {
       background: #0a0a0a;
@@ -105,7 +89,7 @@
       align-items: center;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.7);
       margin: 2rem auto;
     }
     .feature-img-wrapper {
@@ -180,7 +164,6 @@
       color: #aaa;
       line-height: 1.4;
     }
-
     /* ====== LINKS SECTION ====== */
     .links-section {
       background: #0a0a0a;
@@ -200,19 +183,14 @@
       color: #aaa;
       margin-bottom: 2rem;
     }
-
-    /*
-      نمایش 4 ستون در دسکتاپ و تبلت،
-      فاصله 1rem بین باکس‌ها
-    */
+    /* Grid برای 4 ستون با فاصله مناسب */
     .subscription-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem; 
+      gap: 1rem;
       max-width: 1100px;
       margin: 0 auto;
     }
-
     .subscription-box {
       display: flex;
       align-items: center;
@@ -222,36 +200,36 @@
       text-align: center;
       border-radius: 20px;
       color: #fff;
-      background: #5B0EBD; /* بنفش ساده */
-      user-select: none;   /* جلوگیری از انتخاب متن */
+      background: #5B0EBD;
+      user-select: none;
       border: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      /* تغییر رنگ و بوردر به صورت نرم */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       transition: background 0.6s, border 0.6s;
-      /* برای جلوگیری از اسکرول ناخواسته در موبایل هنگام لمس */
       touch-action: none;
     }
     .subscription-box span {
       font-weight: 600;
       font-size: 0.95rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
       max-width: 100%;
       text-align: center;
+      transition: opacity 0.6s;
     }
-    /* حالت کلیک: مشکی + بوردر بنفش */
+    /* در حالت فعال، متن ناپدید شده و تصویر موشک نمایش داده می‌شود */
     .subscription-box.box-active {
-      background: #000;
+      background: #000 url("https://i.postimg.cc/J4pmBTM3/image.png") center/contain no-repeat;
       border: 1px solid #5B0EBD;
     }
-
+    .subscription-box.box-active span {
+      opacity: 0;
+    }
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.85rem;
       color: #666;
     }
-
-    /* ====== MEDIA QUERY (تا 768 پیکسل) ====== */
+    /* MEDIA QUERY برای تبلت */
     @media (max-width: 768px) {
       .hero {
         min-height: 60vh;
@@ -288,18 +266,14 @@
         font-size: 0.85rem;
       }
     }
-
-    /* ====== MEDIA QUERY (تا 480 پیکسل) ====== */
+    /* MEDIA QUERY برای موبایل */
     @media (max-width: 480px) {
-      /* هدر در موبایل */
       .hero {
         min-height: 55vh;
       }
-      /* تیتر هدر دقیقاً هم‌اندازه با بخش لینک‌ها (2.2rem) */
       .hero h1 {
         font-size: 2.2rem;
       }
-      /* متن هدر هم‌اندازه با زیرتیتر لینک‌ها (1rem) */
       .hero p {
         font-size: 1rem;
       }
@@ -322,11 +296,10 @@
       .stat-item p {
         font-size: 0.75rem;
       }
-
-      /* فاصله بیشتر از کناره‌های موبایل + کاهش فاصله بین باکس‌ها */
+      /* فاصله از کناره‌ها در موبایل */
       .subscription-container {
-        margin: 0 1rem; 
-        gap: 0.5rem;  
+        margin: 0 1rem;
+        gap: 0.5rem;
       }
       .subscription-box {
         height: 90px;
@@ -342,30 +315,22 @@
   <section class="hero">
     <h1>ProCreative VPN</h1>
     <p>Secure, Modern, and Free</p>
-    <button
-      class="cta-btn"
-      onclick="document.getElementById('feature').scrollIntoView({ behavior: 'smooth' });"
-    >
+    <button class="cta-btn" onclick="document.getElementById('feature').scrollIntoView({ behavior: 'smooth' });">
       Discover More
     </button>
   </section>
-
   <!-- FEATURE SECTION -->
   <section class="feature-section" id="feature">
     <div class="feature-container">
       <div class="feature-img-wrapper">
-        <img
-          src="https://i.postimg.cc/28CJ2HQh/3d-cyber-security-3d-icon-249956-407.jpg"
-          alt="Security Icon"
-        />
+        <img src="https://i.postimg.cc/28CJ2HQh/3d-cyber-security-3d-icon-249956-407.jpg" alt="Security Icon" />
       </div>
       <div class="feature-content">
         <div class="pink-card">
           <div class="arrow">⤴</div>
           <h3>High-Level Security</h3>
           <p>
-            Protect your data and privacy with next-gen encryption and ultra-fast
-            servers.
+            Protect your data and privacy with next-gen encryption and ultra-fast servers.
           </p>
         </div>
         <div class="feature-stats">
@@ -381,18 +346,15 @@
       </div>
     </div>
   </section>
-
   <!-- LINKS SECTION -->
   <section class="links-section" id="links-section">
     <h2 class="section-title">Modern VPN Links</h2>
     <p class="section-subtitle">Click on any box to copy your link</p>
     <div class="subscription-container" id="links"></div>
   </section>
-
   <footer>
     © 2025 Reza Alipour — All rights reserved.
   </footer>
-
   <script>
     // حالت کلیک برای باکس‌ها
     function handlePointerDown(e) {
@@ -407,56 +369,41 @@
     function handlePointerCancel(e) {
       e.currentTarget.classList.remove('box-active');
     }
-
     // خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
     fetch("sub.txt")
       .then((response) => response.text())
       .then((data) => {
         const lines = data.split(/\r?\n/).filter((line) => line.trim() !== "");
         const container = document.getElementById("links");
-
         lines.forEach((line, index) => {
           const box = document.createElement("div");
           box.className = "subscription-box";
-
           const textSpan = document.createElement("span");
           textSpan.textContent = `Server ${index + 1}`;
           box.appendChild(textSpan);
-
-          // کلیک/لمس برای کپی لینک
+          // کلیپ به کلیپ‌بورد
           box.addEventListener("click", () => {
-            navigator.clipboard
-              .writeText(line)
-              .catch((err) => console.error("Failed to copy link:", err));
+            navigator.clipboard.writeText(line).catch((err) => console.error("Failed to copy link:", err));
           });
-
-          // برای دسکتاپ
+          // رویدادهای دسکتاپ
           box.addEventListener("mousedown", handlePointerDown);
           box.addEventListener("mouseup", handlePointerUp);
           box.addEventListener("mouseleave", handlePointerCancel);
-
-          // برای موبایل
+          // رویدادهای موبایل
           box.addEventListener("touchstart", handlePointerDown, {passive:false});
           box.addEventListener("touchend", handlePointerUp);
           box.addEventListener("touchcancel", handlePointerCancel);
-
           container.appendChild(box);
         });
       })
       .catch((error) => {
         console.error("Error fetching sub.txt:", error);
       });
-
-    /*
-      پویاکردن رنگ نوار مرورگر هنگام اسکرول (فقط در اندروید کروم پشتیبانی می‌شود)
-      اگر اسکرول بیش از 200px باشد، تم تیره می‌شود؛ وگرنه بنفش.
-    */
+    // تغییر پویا رنگ نوار مرورگر بر اساس اسکرول (در اندروید کروم)
     window.addEventListener("scroll", () => {
       const scrolled = window.scrollY;
       const color = scrolled > 200 ? "#000000" : "#5B0EBD";
-      document
-        .querySelector("meta[name='theme-color']")
-        .setAttribute("content", color);
+      document.querySelector("meta[name='theme-color']").setAttribute("content", color);
     });
   </script>
 </body>
