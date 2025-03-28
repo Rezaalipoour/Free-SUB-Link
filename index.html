@@ -5,7 +5,7 @@
   <!-- تگ viewport برای موبایل -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- رنگ نوار مرورگر در موبایل -->
+  <!-- رنگ نوار مرورگر در موبایل (شروع با بنفش) -->
   <meta name="theme-color" content="#5B0EBD" />
 
   <title>Modern VPN Subscription</title>
@@ -59,7 +59,7 @@
       padding: 0 1rem;
     }
     .hero h1 {
-      font-size: 3rem; /* در دسکتاپ: کمی کوچک‌تر از حالت خیلی بزرگ */
+      font-size: 3rem; /* دسکتاپ/تبلت */
       font-weight: 800;
       margin-bottom: 1rem;
       line-height: 1.2;
@@ -201,11 +201,14 @@
       margin-bottom: 2rem;
     }
 
-    /* استفاده از Grid برای 4 ستون با فاصله (gap) مناسب */
+    /*
+      نمایش 4 ستون در دسکتاپ و تبلت،
+      فاصله 1rem بین باکس‌ها
+    */
     .subscription-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;  /* فاصله بین باکس‌ها در دسکتاپ */
+      gap: 1rem; 
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -223,10 +226,9 @@
       user-select: none;   /* جلوگیری از انتخاب متن */
       border: none;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-
       /* تغییر رنگ و بوردر به صورت نرم */
       transition: background 0.6s, border 0.6s;
-      /* برای موبایل که رویداد pointer را نادیده نگیرد */
+      /* برای جلوگیری از اسکرول ناخواسته در موبایل هنگام لمس */
       touch-action: none;
     }
     .subscription-box span {
@@ -236,7 +238,7 @@
       max-width: 100%;
       text-align: center;
     }
-    /* حالت کلیک: مشکی + بوردر بنفش، بعد مکث به حالت اولیه */
+    /* حالت کلیک: مشکی + بوردر بنفش */
     .subscription-box.box-active {
       background: #000;
       border: 1px solid #5B0EBD;
@@ -255,10 +257,10 @@
         min-height: 60vh;
       }
       .hero h1 {
-        font-size: 2.8rem; /* در تبلت کمی بزرگ‌تر از نسخه دسکتاپ */
+        font-size: 2.5rem;
       }
       .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
       .feature-container {
         flex-direction: column;
@@ -289,14 +291,17 @@
 
     /* ====== MEDIA QUERY (تا 480 پیکسل) ====== */
     @media (max-width: 480px) {
+      /* هدر در موبایل */
       .hero {
         min-height: 55vh;
       }
+      /* تیتر هدر دقیقاً هم‌اندازه با بخش لینک‌ها (2.2rem) */
       .hero h1 {
-        font-size: 3rem; /* بزرگ‌تر در موبایل طبق درخواست */
+        font-size: 2.2rem;
       }
+      /* متن هدر هم‌اندازه با زیرتیتر لینک‌ها (1rem) */
       .hero p {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
       .feature-img-wrapper img {
         width: 180%;
@@ -318,13 +323,13 @@
         font-size: 0.75rem;
       }
 
-      /* فاصله بیشتر از کناره‌ها + فاصله کمتر بین باکس‌ها در گوشی */
+      /* فاصله بیشتر از کناره‌های موبایل + کاهش فاصله بین باکس‌ها */
       .subscription-container {
-        margin: 0 1rem;    /* فاصله از کناره‌های موبایل */
-        gap: 0.5rem;       /* کاهش فاصله بین باکس‌ها */
+        margin: 0 1rem; 
+        gap: 0.5rem;  
       }
       .subscription-box {
-        height: 90px;      /* کمی کوچک‌تر */
+        height: 90px;
       }
       .subscription-box span {
         font-size: 0.75rem;
@@ -403,6 +408,7 @@
       e.currentTarget.classList.remove('box-active');
     }
 
+    // خواندن لینک‌ها از sub.txt و ساخت باکس‌ها
     fetch("sub.txt")
       .then((response) => response.text())
       .then((data) => {
@@ -413,28 +419,26 @@
           const box = document.createElement("div");
           box.className = "subscription-box";
 
-          // عنوان باکس: Server 1, Server 2, ...
           const textSpan = document.createElement("span");
           textSpan.textContent = `Server ${index + 1}`;
           box.appendChild(textSpan);
 
-          // کپی لینک به کلیپ‌بورد
+          // کلیک/لمس برای کپی لینک
           box.addEventListener("click", () => {
             navigator.clipboard
               .writeText(line)
               .catch((err) => console.error("Failed to copy link:", err));
           });
 
-          // برای کار در موبایل/دسکتاپ: pointerdown, touchstart
-          box.addEventListener('pointerdown', handlePointerDown);
-          box.addEventListener('pointerup', handlePointerUp);
-          box.addEventListener('pointercancel', handlePointerCancel);
-          box.addEventListener('pointerleave', handlePointerCancel);
+          // برای دسکتاپ
+          box.addEventListener("mousedown", handlePointerDown);
+          box.addEventListener("mouseup", handlePointerUp);
+          box.addEventListener("mouseleave", handlePointerCancel);
 
-          // رویدادهای لمسی (fallback) اگر گوشی pointer را پشتیبانی نکند
-          box.addEventListener('touchstart', handlePointerDown);
-          box.addEventListener('touchend', handlePointerUp);
-          box.addEventListener('touchcancel', handlePointerCancel);
+          // برای موبایل
+          box.addEventListener("touchstart", handlePointerDown, {passive:false});
+          box.addEventListener("touchend", handlePointerUp);
+          box.addEventListener("touchcancel", handlePointerCancel);
 
           container.appendChild(box);
         });
@@ -442,6 +446,18 @@
       .catch((error) => {
         console.error("Error fetching sub.txt:", error);
       });
+
+    /*
+      پویاکردن رنگ نوار مرورگر هنگام اسکرول (فقط در اندروید کروم پشتیبانی می‌شود)
+      اگر اسکرول بیش از 200px باشد، تم تیره می‌شود؛ وگرنه بنفش.
+    */
+    window.addEventListener("scroll", () => {
+      const scrolled = window.scrollY;
+      const color = scrolled > 200 ? "#000000" : "#5B0EBD";
+      document
+        .querySelector("meta[name='theme-color']")
+        .setAttribute("content", color);
+    });
   </script>
 </body>
 </html>
